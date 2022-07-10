@@ -50,6 +50,7 @@ class ScrollPill{
         const windowHeight = window.innerHeight;
         const scrolled = (scrollY / (scrollHeight - windowHeight)) * 100;
         this.scroll_percent = scrolled;
+        this.element.classList.remove('scrollpill-open');
         if(scrolled === 0){
             this.element.classList.add('scrollpill-at-top');
             this.element.classList.remove('scrollpill-at-bottom');
@@ -91,7 +92,7 @@ class ScrollPill{
     }
     onmouseoff(event){
         this.is_hovered = false;
-        if(this.scroll_percent != 0 && this.scroll_percent != 100){
+        if(this.scroll_percent != 0 && this.scroll_percent != 100 && !this.navbar.is_open){
             this.burger_element.innerHTML = "";
             setTimeout(()=>{this.burger_element.innerHTML = "";}, 200);
         }
@@ -104,6 +105,7 @@ class ScrollPill{
             this.burger_element.innerHTML = "";
         }else{
             if(this.navbar.is_open){
+                this.element.classList.remove('scrollpill-open')
                 if(this.scroll_percent == 0){
                     this.navbar.is_open = false;
                 }else{
