@@ -109,7 +109,9 @@ class ScrollPill{
                     this.navbar.is_open = false;
                 }else{
                     this.element.classList.remove('scrollpill-open')
-                    this.navbar.hide();
+                    if(document.querySelectorAll('.scrollpill-navbar:hover').length == 0){
+                        this.navbar.hide()
+                    }
                 }
             }else{
                 this.navbar.show();

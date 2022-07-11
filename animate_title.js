@@ -58,16 +58,30 @@ const titleAnimationToggleTypingIndicator = function(){
         //console.log(TitleElement.innerHTML);
     }
 }
+var particle_system = null;
 window.addEventListener('DOMContentLoaded', async()=>{
-    TitleElement = document.getElementById("page-title");
-    setInterval(titleAnimationToggleTypingIndicator, 1000);
-    titleAnimationHideEverything();
-    for(let i = 0; i < TitleAnimationTexts.length-1; i++){
-        await titleAnimationTypewriteTitle(TitleAnimationTexts[i], 70, true);
-        await sleep(400);
+    if(localStorage.getItem("title-animation-done") === "true"){
+        TitleElement = document.getElementById("page-title");
+        setInterval(titleAnimationToggleTypingIndicator, 1000);
+        await titleAnimationTypewriteTitle(TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
+    }else{
+        TitleElement = document.getElementById("page-title");
+        setInterval(titleAnimationToggleTypingIndicator, 1000);
+        titleAnimationHideEverything();
+        for(let i = 0; i < TitleAnimationTexts.length-1; i++){
+            await titleAnimationTypewriteTitle(TitleAnimationTexts[i], 70, true);
+            await sleep(400);
+        }
+        await titleAnimationTypewriteTitle(TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
+        titleAnimationBringIntoView();
+        localStorage.setItem("title-animation-done", "true");
     }
-    await titleAnimationTypewriteTitle(TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
-    titleAnimationBringIntoView();
+    if(particle_system_ready) particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
+    else{
+        document.addEventListener('particle_system_ready', ()=>{
+            particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
+        });
+    }
 });
 
 

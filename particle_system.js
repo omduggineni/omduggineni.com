@@ -124,4 +124,5 @@ class ParticleSystem{
         this._ticknum++;
     }
 }
-const particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
+let particle_system_ready = true;
+document.dispatchEvent('particle_system_ready');
