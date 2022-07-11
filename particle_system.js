@@ -121,6 +121,7 @@ class ParticleSystem{
         for(let i = 0; i < this.particles.length; i++){
             this.particles[i].update();
         }
+        this._ticknum++;
     }
 }
 const particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);

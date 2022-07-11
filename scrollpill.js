@@ -105,15 +105,17 @@ class ScrollPill{
             this.burger_element.innerHTML = "";
         }else{
             if(this.navbar.is_open){
-                this.element.classList.remove('scrollpill-open')
                 if(this.scroll_percent == 0){
                     this.navbar.is_open = false;
                 }else{
+                    this.element.classList.remove('scrollpill-open')
                     this.navbar.hide();
                 }
             }else{
                 this.navbar.show();
-                this.element.classList.add('scrollpill-open') //TODO: figure out when to remove this tag
+                if(this.scroll_percent > 0){
+                    this.element.classList.add('scrollpill-open')
+                }
                 setTimeout(()=>{this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";}, 200);
             }
             this.navbar.is_open = !this.navbar.is_open;
