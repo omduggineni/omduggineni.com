@@ -76,9 +76,9 @@ window.addEventListener('DOMContentLoaded', async()=>{
         titleAnimationBringIntoView();
         localStorage.setItem("title-animation-done", "true");
     }
-    if(particle_system_ready) particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
+    if(particle_system_ready || false) particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
     else{
-        document.addEventListener('particle_system_ready', ()=>{
+        document.body.addEventListener('particle_system_ready', ()=>{
             particle_system = new ParticleSystem(document.getElementById('particle_system'), 200);
         });
     }

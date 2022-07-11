@@ -125,4 +125,5 @@ class ParticleSystem{
     }
 }
 let particle_system_ready = true;
-document.dispatchEvent('particle_system_ready');
+const particle_event = new Event('particle_system_ready');
+document.body.dispatchEvent(particle_event);
