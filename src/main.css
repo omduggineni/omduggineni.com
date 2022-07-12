@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*fonts + effects*/
 /*use a font*/
 * {-webkit-font-smoothing: antialiased;}
@@ -189,7 +193,8 @@ html {
     color: #fff;
     text-shadow: 1px 2px 0.5rem #0066ff;
     opacity: 0.2;
-    animation: fade-out 1s ease-in-out infinite;
+    animation: fade-out ease-in-out infinite;
+    animation-duration: 1s;
 }
 
 /*title animation*/

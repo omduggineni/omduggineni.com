@@ -33,16 +33,15 @@ class ScrollPill{
         this.element.appendChild(this.navbar.element);
 
         //initialization of handlers
-        this.handlers = {};
         this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";
-        this.handlers.scroll = this.handleScroll.bind(this);
-        window.addEventListener('scroll', this.handlers.scroll);
-        this.handlers.mouseover = this.onmouseover.bind(this);
-        this.element.addEventListener('mouseenter', this.handlers.mouseover);
-        this.handlers.mouseoff = this.onmouseoff.bind(this);
-        this.element.addEventListener('mouseleave', this.handlers.mouseoff);
-        this.handlers.onclick = this.onclick.bind(this);
-        this.element.addEventListener('mousedown', this.handlers.onclick);
+        this.handler_scroll = this.handleScroll.bind(this);
+        window.addEventListener('scroll', this.handler_scroll);
+        this.handler_mouseover = this.onmouseover.bind(this);
+        this.element.addEventListener('mouseenter', this.handler_mouseover);
+        this.handler_mouseoff = this.onmouseoff.bind(this);
+        this.element.addEventListener('mouseleave', this.handler_mouseoff);
+        this.handler_onclick = this.onclick.bind(this);
+        this.element.addEventListener('mousedown', this.handler_onclick);
     }
     handleScroll(event){
         const scrollY = window.pageYOffset;
@@ -128,4 +127,5 @@ class ScrollPill{
         this.handlers.scroll(null);
     }
 }
-scrollHandler = new ScrollPill("scrollpill");
+
+export {ScrollPill};
