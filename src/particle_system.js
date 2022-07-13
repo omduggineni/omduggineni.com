@@ -28,14 +28,14 @@ class ValueNoiseGenerator{
     }
 }
 
-var particleTextRemoveList = [];
-var particleTextRemoveTimeout = null;
-const particleTextRemove = ()=>{
-    for(let i = 0; i < particleTextRemoveList.length; i++){
-        particleTextRemoveList[i].remove();
-    }
-    particleTextRemoveList = [];
-}
+// var particleTextRemoveList = [];
+// var particleTextRemoveTimeout = null;
+// const particleTextRemove = ()=>{
+//     for(let i = 0; i < particleTextRemoveList.length; i++){
+//         particleTextRemoveList[i].remove();
+//     }
+//     particleTextRemoveList = [];
+// }
 const particleSay = (text, parentElement, x, y, lifetime) => {
     let element = document.createElement('span');
     element.innerHTML = text;
@@ -45,11 +45,13 @@ const particleSay = (text, parentElement, x, y, lifetime) => {
     element.style.left = x + 'px';
     element.style.animationDuration = lifetime/1000 + 's';
     setTimeout(()=>{
-        element.style.animation = '';
-        element.style.display = 'none';
-        particleTextRemoveList.push(element);
-        clearTimeout(particleTextRemoveTimeout);
-        particleTextRemoveTimeout = setTimeout(particleTextRemove, 100);
+        element.remove();
+        
+        //element.style.animation = '';
+        //element.style.display = 'none';
+        //particleTextRemoveList.push(element);
+        //clearTimeout(particleTextRemoveTimeout);
+        //particleTextRemoveTimeout = setTimeout(particleTextRemove, 100);
     }, lifetime);
 }
 

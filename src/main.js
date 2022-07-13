@@ -1,4 +1,4 @@
-import './debug_events.js';
+//import './debug_events.js';
 import executeTitleAnimation from './animate_title.js';
 scrollpill = import('./scrollpill.js');
 particle_system = import('./particle_system.js');
@@ -9,7 +9,7 @@ executeTitleAnimation().then(()=>{
     });
     particle_system.then((ParticleSystem)=>{
         let particle_system = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 100);
-        for(let i = 0; i < 50; i++){
+        for(let i = 0; i < 10; i++){
             setTimeout(()=>{
                 particle_system.particles.forEach(p => {
                     p.sayUtterances(ParticleSystem.rick_utterances);
