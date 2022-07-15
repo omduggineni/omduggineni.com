@@ -31,7 +31,9 @@ jobs:
     - run: git fetch origin gh-pages
     - run: git stash
     - run: git checkout gh-pages
+    - run: mv .git ..
     - run: rm -rf ..?* .[!.]* *
+    - run: mv ../.git .
     - run: mv ../dist/* .
     - run: git add -v .
     - run: git commit -m "GitHub Pages build 7-15-2022"
