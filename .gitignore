@@ -4,7 +4,6 @@ dist/
 dist/*
 .DS_Store
 **/.DS_Store
-package-lock.json
 yarn.lock
 .parcel-cache/
 .parcel-cache/*
