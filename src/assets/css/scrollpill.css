@@ -1,25 +1,3 @@
-/* tailwind css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-/*fonts + effects*/
-/*use a font*/
-* {-webkit-font-smoothing: antialiased;}
-@font-face {
-    font-family: 'Roboto Mono';
-    font-weight: 1 999;
-    src: url(google-fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf) format('truetype');
-}
-.font-monospace {
-    font-family: 'Roboto Mono', monospace;
-}
-.title-drop-shadow {
-    text-shadow: 1px 2px 0.5rem #0066ff;
-}
-
-
 /*scrollpill*/
 html {
     scroll-behavior: smooth;
@@ -160,55 +138,4 @@ html {
     /* color: white; */
     animation: shrink-navbar-text 0.2s ease-in-out forwards !important;
     animation-iteration-count: 1 !important;
-}
-
-/*particle system*/
-.particle-system{
-    z-index: -2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 0;
-}
-.particle-system-particle{
-    position: absolute;
-    border-radius: 50%;
-    background-color: yellow;
-    opacity: 0.1;
-    width: 15px;
-    height: 15px;
-}
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-.particle-system-text{
-    position: absolute;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 1px 2px 0.5rem #0066ff;
-    opacity: 0.2;
-    animation: fade-out ease-in-out infinite;
-    animation-duration: 1s;
-}
-
-/*title animation*/
-.not-visible{
-    display: none !important;
-}
-@keyframes bring-into-view-keyframes {
-    0% {
-        opacity: 0;
-    }
-    100% {}
-}
-.bring-into-view{
-    animation: bring-into-view-keyframes 1s ease-in-out forwards !important;
 }
