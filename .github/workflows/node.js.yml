@@ -27,3 +27,11 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npx parcel build src/index.html
+    - run: mv dist/ ..
+    - run: git fetch origin gh-pages
+    - run: git checkout gh-pages
+    - run: rm -rf ..?* .[!.]* *
+    - run: mv ../dist/* .
+    - run: git add -v .
+    - run: git commit -m "GitHub Pages build 7-15-2022"
+    - run: git push origin gh-pages
