@@ -15,7 +15,6 @@ var titleAnimationHideEverything = function(){
 
 var titleAnimationBringIntoView = function(){
     let elements_on_page = document.body.querySelectorAll(":not(.necessary-for-title-animation)");
-    //console.log(elements_on_page);
     elements_on_page.forEach(function(element){
         element.classList.add('bring-into-view');
         element.classList.remove("not-visible");
@@ -27,13 +26,12 @@ var titleAnimationBringIntoView = function(){
     }, 1000);
 };
 
-const titleAnimationTypewriteTitle = async(text, delay, untypewrite) =>{
+const titleAnimationTypewriteTitle = async(title_elements, typing_indicator_element, text, delay, untypewrite) =>{
     //TitleElement
-    let title_text = "";
     let delays = [];
     for(let i = 0; i < text.length; i++){
-        title_text += text[i];
-        TitleElement.innerHTML = title_text + "&#9608";
+        title_elements[i].innerText = text[i];
+        typing_indicator_element.style.opacity = "1";
         let current_delay = Math.random()*delay+delay;
         delays.push(current_delay);
         await sleep(current_delay);
@@ -41,47 +39,79 @@ const titleAnimationTypewriteTitle = async(text, delay, untypewrite) =>{
     if(untypewrite){
         //untypewrite
         for(let i = text.length-1; i >= 0; i--){
-            title_text = title_text.substring(0, title_text.length-1);
-            TitleElement.innerHTML = title_text + "&#9608";
+            title_elements[i].innerText = "";
+            typing_indicator_element.style.opacity = "1";
             let current_delay = delays[i]*0.9;
             await sleep(current_delay);
         }
     }
 }
-const titleAnimationToggleTypingIndicator = function(){
-    //console.log(TitleElement.innerHTML[TitleElement.innerHTML.length-1])
-    //console.log(decodeURI("&#9608"))
-    //console.log(TitleElement.innerHTML[TitleElement.innerHTML.length-1] == "\u2588")
-    if(TitleElement.innerHTML[TitleElement.innerHTML.length-1] == "\u2588"){
-        TitleElement.innerHTML = TitleElement.innerHTML.replace("\u2588", "");
-        //console.log(TitleElement.innerHTML);
-    }else{
-        TitleElement.innerHTML = TitleElement.innerHTML + "&#9608";
-        //console.log(TitleElement.innerHTML);
+const titleAnimationToggleTypingIndicatorHandler = function(typing_indicator_element){
+    return ()=>{
+        if(typing_indicator_element.style.opacity === "1"){
+            typing_indicator_element.style.opacity = "0";
+        }else{
+            typing_indicator_element.style.opacity = "1";
+        }
     }
 }
 const executeTitleAnimation = async() => {
-    let promise = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve) => {
         window.addEventListener('DOMContentLoaded', async()=>{
-            if(localStorage.getItem("title-animation-done") === "true" && (localStorage.getItem("title-animation-version") || false) && parseInt(localStorage.getItem("title-animation-version")) === titleAnimationVersion){
-                resolve();
-                TitleElement = document.getElementById("page-title");
-                setInterval(titleAnimationToggleTypingIndicator, 1000);
-                await titleAnimationTypewriteTitle(TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
-            }else{
-                TitleElement = document.getElementById("page-title");
-                setInterval(titleAnimationToggleTypingIndicator, 1000);
+            let TitleElement = document.getElementById("page-title");
+            TitleElement.innerText = "";
+
+            let TitleTextElements = [];
+            let max_TitleTextElements = 0;
+            for(let i = 0; i < TitleAnimationTexts.length; i++){
+                max_TitleTextElements = Math.max(max_TitleTextElements, TitleAnimationTexts[i].length);
+            }
+            for(let i = 0; i < max_TitleTextElements; i++){
+                let TitleTextElement = document.createElement("span");
+                TitleTextElement.classList.add("necessary-for-title-animation");
+                TitleTextElements.push(TitleTextElement);
+                TitleElement.appendChild(TitleTextElement);
+            }
+
+            let TitleTypingElement = document.createElement("span");
+            TitleTypingElement.classList.add("necessary-for-title-animation");
+            TitleTypingElement.innerHTML = "&#9608";
+            TitleElement.appendChild(TitleTypingElement);
+            setInterval(titleAnimationToggleTypingIndicatorHandler(TitleTypingElement), 1000);
+
+            if(localStorage.getItem("title-animation-done") !== "true" && !(localStorage.getItem("title-animation-version") || false) && parseInt(localStorage.getItem("title-animation-version")) !== titleAnimationVersion){
                 titleAnimationHideEverything();
                 for(let i = 0; i < TitleAnimationTexts.length-1; i++){
-                    await titleAnimationTypewriteTitle(TitleAnimationTexts[i], 70, true);
+                    await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[i], 70, true);
                     await sleep(400);
                 }
-                await titleAnimationTypewriteTitle(TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
+                await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
                 titleAnimationBringIntoView();
                 localStorage.setItem("title-animation-done", "true");
                 localStorage.setItem("title-animation-version", titleAnimationVersion+"");
-                resolve();
             }
+
+            resolve();
+            let elements_necessary_for_title_animation = document.body.querySelectorAll(".necessary-for-title-animation");
+            elements_necessary_for_title_animation.forEach(function(element){
+                element.classList.remove("necessary-for-title-animation");
+            });
+
+            // let TitleTextElementsFront = TitleTextElements;
+            // let TitleTextElementsBack = [];
+
+            // //interleave TitleTextElementsBack into children of TitleElement
+            // for(let i = 0; i < TitleTextElementsFront.length; i++){
+            //     let TitleTextElement = TitleTextElementsFront[i];
+            //     TitleTextElement.classList.add("not-visible");
+            //     TitleTextElement.classList.remove("bring-into-view");
+            //     TitleTextElementsBack.push(TitleTextElement);
+            //     TitleElement.appendChild(TitleTextElement);
+            // }
+
+            await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length-1], 70, false);
+            await sleep(1000);
+            
         });
     });
     return promise;
