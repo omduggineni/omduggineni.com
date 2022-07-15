@@ -4,5 +4,11 @@
     "parcel": "^2.6.2",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"
+  },
+  "scripts": {
+    "serve": "parcel serve src/index.html",
+    "serve2": "parcel build src/index.html && http-server dist/",
+    "build": "parcel build src/index.html",
+    "watch": "parcel watch src/index.html"
   }
 }
