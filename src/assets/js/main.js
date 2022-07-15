@@ -1,7 +1,7 @@
 //import './debug_events.js';
 import executeTitleAnimation from './animate_title.js';
-scrollpill = import('./scrollpill.js');
-particle_system = import('./particle_system.js');
+let scrollpill = import('./scrollpill.js');
+let particle_system = import('./particle_system.js');
 
 executeTitleAnimation().then(()=>{
     scrollpill.then((ScrollPill)=>{
