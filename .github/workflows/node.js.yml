@@ -36,5 +36,6 @@ jobs:
     - run: mv ../.git .
     - run: mv ../dist/* .
     - run: git add -v .
+    - run: git configure --global user.name "GitHub Actions"
     - run: git commit -m "GitHub Pages build 7-15-2022"
     - run: git push origin gh-pages
