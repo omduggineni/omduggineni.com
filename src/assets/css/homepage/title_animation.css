@@ -1,0 +1,13 @@
+/*title animation*/
+.not_visible{
+    display: none !important;
+}
+@keyframes bring-into-view-keyframes {
+    0% {
+        opacity: 0;
+    }
+    100% {}
+}
+.bring_into_view{
+    animation: bring-into-view-keyframes 1s ease-in-out forwards !important;
+}

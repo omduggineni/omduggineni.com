@@ -34,3 +34,8 @@
     animation: fade-out ease-in-out infinite;
     animation-duration: 1s;
 }
+@media prefers-reduced-motion{
+   .particle-system-text{
+       animation: none !important;
+   }
+}

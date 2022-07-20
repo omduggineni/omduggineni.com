@@ -1,6 +1,17 @@
 class ScrollPillNav {
     constructor(element) {
         this.element = element;
+        this.is_hovered = false;
+        this.element.addEventListener('mouseenter', this.handle_hoverstart.bind(this));
+        this.element.addEventListener('mouseleave', this.handle_hoverend.bind(this));
+    }
+    handle_hoverstart(){
+        this.is_hovered = true;
+        this.element.classList.add("scroll-pill-nav-hovered");
+    }
+    handle_hoverend(){
+        this.is_hovered = false;
+        this.element.classList.remove("scroll-pill-nav-hovered");
     }
     show(){
         this.element.style.display = 'block';
@@ -15,19 +26,11 @@ class ScrollPill{
         this.element = document.getElementById(element_id);
         this.element.classList.add('scrollpill');
         this.element.classList.add('scrollpill-at-top-first');
-        this.burger_element = this.element.appendChild(document.createElement('span'));
+        this.burger_element = document.getElementById("scrollpill-burger_element");
         this.scroll_percent = 0;
         this.is_hovered = false;
         this.options = options;
-        let possible_navbar = this.element.querySelectorAll('.scrollpill-navbar');
-        if(possible_navbar.length > 0){
-            this.navbar = new ScrollPillNav(possible_navbar[0]);
-            for(let i = 1; i < possible_navbar.length; i++){
-                possible_navbar[i].style.display = 'none';
-            }
-        }else{
-            this.navbar = new ScrollPillNav(document.createElement('div'));
-        }
+        this.navbar = new ScrollPillNav(this.element.querySelector('.scrollpill-navbar'));
         this.navbar.show();
         this.navbar.is_open = false;
         this.element.appendChild(this.navbar.element);
@@ -108,7 +111,7 @@ class ScrollPill{
                     this.navbar.is_open = false;
                 }else{
                     this.element.classList.remove('scrollpill-open')
-                    if(document.querySelectorAll('.scrollpill-navbar:hover').length == 0){
+                    if(!this.navbar.is_hovered){
                         this.navbar.hide()
                     }
                 }
@@ -124,7 +127,7 @@ class ScrollPill{
     }
     update(percent){
         window.scrollTo(0, percent / 100 * (document.body.scrollHeight - window.innerHeight));
-        this.handlers.scroll(null);
+        this.handleScroll(null);
     }
 }
 

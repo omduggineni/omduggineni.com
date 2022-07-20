@@ -1,0 +1,4 @@
+Fill: 1
+Weight: 600
+Grade: 0
+Optical Size: 48px

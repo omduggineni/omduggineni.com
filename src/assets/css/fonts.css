@@ -3,6 +3,7 @@
 * {-webkit-font-smoothing: antialiased;}
 @font-face {
     font-family: 'Roboto Mono';
+    font-display: swap;
     font-weight: 1 999;
     src: url(../../include/google-fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf) format('truetype');
 }
