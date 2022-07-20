@@ -1,0 +1,3 @@
+[submodule "src/rain_checker"]
+	path = src/rain_checker
+	url = https://github.com/omduggineni/rain-checker
