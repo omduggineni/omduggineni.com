@@ -1,19 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Om Duggineni</title>
-        <!--<script src="https://cdn.tailwindcss.com"></script>-->
-        <link rel="stylesheet" href="assets/css/main.css" async/>
-        <script src="assets/js/main.js" type="module" async></script>
-        <link rel="shortcut icon" href="favicon.ico" />
-
+        <style>
+            @import url("assets/css/tailwind/tailwind_base.css");
+            @import url("assets/css/tailwind/tailwind_utilities.css");
+            @import url("assets/css/tailwind/tailwind_components.css");
+            @import url("assets/css/fonts.css");
+            @import url("assets/css/scrollpill/scrollpill.css");
+            @import url("assets/css/homepage/title_animation.css");
+            @import url("assets/css/particle_system.css");
+        </style>
+        <link rel="shortcut icon" href="favicon.ico"/>
+        
         <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Om Duggineni's Website!">
+        <meta charset="UTF-8">
     </head>
     <body class="bg-black">
         <div class="particle-system overflow-hidden" id="particle_system">
 
         </div>
-        <div id="scrollpill">
+        <div id="scrollpill" class="scrollpill scrollpill-at-top-first" style="position:'fixed'; top:0%">
+            <span id="scrollpill-burger_element" class="fa"></span>
             <div class="scrollpill-navbar">
                 <span class="font-light">
                     <a href="#top"><span class="text-blue font-medium">1.</span> About</a>
@@ -31,9 +40,14 @@
         </div>
         <div class="flex overflow-hidden w-screen h-screen">
             <div class="h-auto w-auto self-center px-16 title-drop-shadow text-white text-xl">
-                <h1 class="text-8xl font-monospace" id="page-title">About</h1>
-                </br>
-                <p class="font-monospace text-3xl">test text</p>
+                <div class="w-[50%]">
+                    <h1 class="text-8xl font-monospace" id="page-title">About</h1>
+                    </br>
+                    <p class="font-monospace text-3xl">test text</p>
+                </div>
+                <div class="w-[50%]">
+                    
+                </div>
             </div>
         </div>
         <div class="flex overflow-hidden w-screen h-screen">
@@ -43,17 +57,41 @@
             <div class="text-white text-left text-4xl px-8" style="line-height: 6rem;">
                 <span class="font-bold text-white">
                     <span class="px-2" title="in this order of preference">Get in Touch!:</span>
-                    <a href="mailto:om.psnom@gmail.com" target="_blank" class="px-2">
-                        <i class="fa fa-envelope"></i>
+                    <a href="mailto:om.psnom@gmail.com" class="px-2 fa">
+                        &#xf0e0; <!-- fontawesome -> envelope -->
                     </a>
-                    <a href="https://www.facebook.com/om.duggineni.3" target="_blank" class="px-2">
-                        <i class="fab fa-facebook"></i>
+                    <a href="https://www.facebook.com/om.duggineni.3" class="px-2 fab">
+                        &#xf09a; <!-- fontawesome -> facebook -->
                     </a>
-                    <a href="https://www.linkedin.com/in/om-duggineni-8aab051b3/" target="_blank" class="px-2">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/om-duggineni-8aab051b3/" class="px-2 fab">
+                        &#xf08c; <!-- fontawesome -> linkedin -->
                     </a>
                 </span>
             </div>
         </div>
     </body>
+
+    <script type="module">
+        import './assets/js/fix_scroll_restoration.js';
+        import executeTitleAnimation from './assets/js/homepage/animate_title.js';
+        let scrollpill = import('./assets/js/scrollpill.js');
+        let particle_system = import('./assets/js/particle_system.js');
+
+        executeTitleAnimation().then(()=>{
+            scrollpill.then((ScrollPill)=>{
+                new ScrollPill.ScrollPill("scrollpill");
+            });
+            particle_system.then((ParticleSystem)=>{
+                // let particle_system = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 100);
+                // for(let i = 0; i < 10; i++){
+                //     setTimeout(()=>{
+                //         particle_system.particles.forEach(p => {
+                //             p.sayUtterances(ParticleSystem.rick_utterances);
+                //         });
+                //     }, 1000)
+                // }
+                new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 100);
+            })
+        });
+    </script>
 </html>

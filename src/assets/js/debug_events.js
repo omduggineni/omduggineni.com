@@ -115,6 +115,3 @@ window.clearInterval = function(interval_num){
 //     }
 //     console.log("cancelAnimationFrame handler called. There are " + eventsWaitingCount + " event handlers in operation.");
 // }
-
-
-export {setTimeoutOld, promiseThenOld};
