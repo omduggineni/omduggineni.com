@@ -42,5 +42,5 @@ jobs:
     - run: mv ../dist/* .
     - run: git add -v .
     - run: git config --global user.name "GitHub Actions"
-    - run: git commit -m "GitHub Pages build 7-15-2022"
+    - run: git commit -m "GitHub Pages build 7-15-2022" --allow-empty
     - run: git push origin gh-pages
