@@ -57,14 +57,14 @@
             <div class="text-white text-left text-4xl px-8" style="line-height: 6rem;">
                 <span class="font-bold text-white">
                     <span class="px-2" title="in this order of preference">Get in Touch!:</span>
-                    <a href="mailto:om.psnom@gmail.com" class="px-2">
-                        <i class="fa fa-solid fa-envelope"></i>
+                    <a href="mailto:om.psnom@gmail.com" class="px-2 fa">
+                        &#xf0e0; <!-- fontawesome -> envelope -->
                     </a>
-                    <a href="https://www.facebook.com/om.duggineni.3" class="px-2">
-                        <i class="fa fa-brands fa-facebook"></i>
+                    <a href="https://www.facebook.com/om.duggineni.3" class="px-2 fab">
+                        &#xf09a; <!-- fontawesome -> facebook -->
                     </a>
-                    <a href="https://www.linkedin.com/in/om-duggineni-8aab051b3/" class="px-2">
-                        <i class="fa fa-brands fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/om-duggineni-8aab051b3/" class="px-2 fab">
+                        &#xf08c; <!-- fontawesome -> linkedin -->
                     </a>
                 </span>
             </div>
@@ -72,6 +72,7 @@
     </body>
 
     <script type="module">
+        import './assets/js/fix_scroll_restoration.js';
         import executeTitleAnimation from './assets/js/homepage/animate_title.js';
         let scrollpill = import('./assets/js/scrollpill.js');
         let particle_system = import('./assets/js/particle_system.js');

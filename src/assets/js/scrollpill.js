@@ -1,3 +1,8 @@
+const fontawesome_icons = {
+    BARS: "&#xf0c9;",
+    ARROW_UP: "&#xf062;"
+};
+
 class ScrollPillNav {
     constructor(element) {
         this.element = element;
@@ -36,7 +41,7 @@ class ScrollPill{
         this.element.appendChild(this.navbar.element);
 
         //initialization of handlers
-        this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";
+        this.burger_element.innerHTML = fontawesome_icons.BARS;
         this.handler_scroll = this.handleScroll.bind(this);
         window.addEventListener('scroll', this.handler_scroll);
         this.handler_mouseover = this.onmouseover.bind(this);
@@ -59,7 +64,7 @@ class ScrollPill{
             this.element.classList.remove('scrollpill-at-middle');
             this.element.classList.remove('scrollpill-at-top-first');
             setTimeout(()=>{
-                this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";
+                this.burger_element.innerHTML = fontawesome_icons.BARS;
                 this.navbar.show();
             }, 200);
         }else if(scrolled >= 100){
@@ -71,7 +76,7 @@ class ScrollPill{
                 this.navbar.hide();
             }
             setTimeout(()=>{
-                this.burger_element.innerHTML = "<i class=\"fa-solid fa-arrow-up\"></i>";
+                this.burger_element.innerHTML = fontawesome_icons.ARROW_UP;
             }, 200);
         }else{
             this.element.classList.remove('scrollpill-at-top');
@@ -89,7 +94,7 @@ class ScrollPill{
     onmouseover(event){
         this.is_hovered = true;
         if(this.scroll_percent != 0 && this.scroll_percent != 100){
-            setTimeout(()=>{this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";}, 200);
+            setTimeout(()=>{this.burger_element.innerHTML = fontawesome_icons.BARS;}, 200);
         }
     }
     onmouseoff(event){
@@ -120,7 +125,7 @@ class ScrollPill{
                 if(this.scroll_percent > 0){
                     this.element.classList.add('scrollpill-open')
                 }
-                setTimeout(()=>{this.burger_element.innerHTML = "<i class=\"fa-solid fa-bars\"></i>";}, 200);
+                setTimeout(()=>{this.burger_element.innerHTML = fontawesome_icons.BARS;}, 200);
             }
             this.navbar.is_open = !this.navbar.is_open;
         }
