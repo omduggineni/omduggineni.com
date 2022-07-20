@@ -1,7 +1,6 @@
 {
   "devDependencies": {
     "http-server": "^14.1.1",
-    "material-symbols": "^0.2.5",
     "parcel": "^2.6.2",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"
