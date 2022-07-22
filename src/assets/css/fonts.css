@@ -17,8 +17,8 @@
 @font-face {
     font-family: 'Font Awesome 6 Free';
     font-display: swap;
-    src: url(../../include/fontawesome-free-6.1.1-web/webfonts/fa-solid-900.woff2) format('woff2'),
-            url(../../include/fontawesome-free-6.1.1-web/webfonts/fa-solid-900.ttf) format('truetype');
+    src: url(../../include/fontawesome/fa-solid-900.woff2) format('woff2'),
+            url(../../include/fontawesome/fa-solid-900.ttf) format('truetype');
 }
 .fa, .fas {
     font-family: 'Font Awesome 6 Free';
@@ -27,8 +27,8 @@
 @font-face {
     font-family: 'Font Awesome 6 Brands';
     font-display: swap;
-    src: url(../../include/fontawesome-free-6.1.1-web/webfonts/fa-brands-400.woff2) format('woff2'),
-            url(../../include/fontawesome-free-6.1.1-web/webfonts/fa-brands-400.ttf) format('truetype');
+    src: url(../../include/fontawesome/fa-brands-400.woff2) format('woff2'),
+            url(../../include/fontawesome/fa-brands-400.ttf) format('truetype');
 }
 .fab {
     font-family: 'Font Awesome 6 Brands';
