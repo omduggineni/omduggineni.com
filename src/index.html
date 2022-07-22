@@ -11,6 +11,7 @@
             @import url("assets/css/homepage/title_animation.css");
             @import url("assets/css/particle_system.css");
         </style>
+        <!--<script src="https://cdn.tailwindcss.com/"></script>-->
         <link rel="shortcut icon" href="favicon.ico"/>
         
         <meta name="viewport" content="width=device-width">
@@ -25,8 +26,8 @@
             <span id="scrollpill-burger_element" class="fa"></span>
             <div class="scrollpill-navbar">
                 <span class="font-light">
-                    <a href="#top"><span class="text-blue font-medium">1.</span> About</a>
-                    <a href="#projects"><span class="text-blue font-medium">2.</span> Projects</a>
+                    <a href="#about-me"><span class="text-blue font-medium">1.</span> About</a>
+                    <a href="#my-projects"><span class="text-blue font-medium">2.</span> Projects</a>
                     <a href="#contact-me"><span class="text-blue font-medium">3.</span> Contact</a>
                 </span>
             </div>
@@ -38,21 +39,33 @@
                 <p class="font-monospace text-3xl">bio/cs enthusiast, tjhsst '23</p>
             </div>
         </div>
-        <div class="flex overflow-hidden w-screen h-screen">
-            <div class="h-auto w-auto self-center px-16 title-drop-shadow text-white text-xl">
-                <div class="w-[50%]">
-                    <h1 class="text-8xl font-monospace" id="page-title">About</h1>
+        <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-white text-xl" id="about-me">
+            <div class="flex h-auto w-auto self-center px-16 py-16">
+                <div class="w-[50%] h-auto py-16 block">
+                    <h1 class="text-8xl font-monospace">About</h1>
                     </br>
                     <p class="font-monospace text-3xl">test text</p>
                 </div>
-                <div class="w-[50%]">
-                    
+                <div class="w-[50%] h-auto relative z-0">
+                    <div class="absolute inset-0 w-500 h-500 m-0 border-solid border-2 z-[-1]" style="transform: translate(5px, -5px);"></div>
+                    <div class="w-auto h-auto border-solid border-2 z-0">
+                        <picture>
+                            <source srcset="assets/images/profile_pic.jpg?as=avif" type="image/avif">
+                            <source srcset="assets/images/profile_pic.jpg?as=webp" type="image/webp">
+                            <source srcset="assets/images/profile_pic.jpg" type="image/jpeg">
+                            <img src="assets/images/profile_pic.jpg?as=webp" alt="An image of Om Duggineni">
+                        </picture>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="flex overflow-hidden w-screen h-screen">
-            <!--Section 3-->
+        <div class="flex overflow-hidden w-screen h-screen" id="my-projects">
+            <!--Cards-->
+
         </div>
+        <!--<div class="flex overflow-hidden w-screen h-screen" id="section-4">
+            <!-\-Section 4-\->
+        </div>-->
         <div class="w-screen h-[6rem] bg-blue-900 flex flex-col" id="contact-me">
             <div class="text-white text-left text-4xl px-8" style="line-height: 6rem;">
                 <span class="font-bold text-white">
@@ -61,7 +74,7 @@
                         &#xf0e0; <!-- fontawesome -> envelope -->
                     </a>
                     <a href="https://www.facebook.com/om.duggineni.3" class="px-2 fab">
-                        &#xf09a; <!-- fontawesome -> facebook -->
+                        &#xf082; <!-- fontawesome -> facebook -->
                     </a>
                     <a href="https://www.linkedin.com/in/om-duggineni-8aab051b3/" class="px-2 fab">
                         &#xf08c; <!-- fontawesome -> linkedin -->
@@ -70,7 +83,7 @@
             </div>
         </div>
     </body>
-
+    
     <script type="module">
         import './assets/js/fix_scroll_restoration.js';
         import executeTitleAnimation from './assets/js/homepage/animate_title.js';
@@ -82,15 +95,14 @@
                 new ScrollPill.ScrollPill("scrollpill");
             });
             particle_system.then((ParticleSystem)=>{
-                // let particle_system = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 100);
-                // for(let i = 0; i < 10; i++){
-                //     setTimeout(()=>{
-                //         particle_system.particles.forEach(p => {
-                //             p.sayUtterances(ParticleSystem.rick_utterances);
+                let particle_system_inst = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 200);
+                // setTimeout(()=>{
+                //     for(let i = 0; i < 10; i++){
+                //         particle_system_inst.particles.forEach(p => {
+                //             p.sayUtterances(ParticleSystem.UtterancesLibrary.rick_utterances, 2000);
                 //         });
-                //     }, 1000)
-                // }
-                new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 100);
+                //     }
+                // }, 1000);
             })
         });
     </script>
