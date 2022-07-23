@@ -20,7 +20,7 @@
     </head>
     <body class="bg-black">
         <div class="particle-system overflow-hidden" id="particle_system">
-
+            <!--The particle system in the background spawns elements in this div-->
         </div>
         <div id="scrollpill" class="scrollpill scrollpill-at-top-first" style="position:'fixed'; top:0%">
             <span id="scrollpill-burger_element" class="fa"></span>
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="flex overflow-hidden w-screen h-screen necessary-for-title-animation">
-            <div class="h-auto w-auto self-center mobile:px-8 desktop:px-16 title-drop-shadow text-white text-xl necessary-for-title-animation">
-                <h1 class="mobile:text-4xl desktop-sm:text-7xl desktop:text-8xl font-monospace necessary-for-title-animation" id="page-title">Om Duggineni &#9608;</h1>
+            <div class="h-auto w-auto self-center mobile-sm:px-6 mobile:px-8 desktop:px-16 title-drop-shadow text-white text-xl necessary-for-title-animation">
+                <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl font-monospace necessary-for-title-animation" id="page-title">Om Duggineni &#9608;</h1>
                 </br>
                 <p class="font-monospace mobile:text-xl desktop:text-3xl">bio/cs enthusiast, tjhsst '23</p>
             </div>
@@ -97,7 +97,7 @@
             particle_system.then((ParticleSystem)=>{
                 let particle_system_inst = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 200);
                 // setTimeout(()=>{
-                //     for(let i = 0; i < 10; i++){
+                //     for(let i = 0; i < 1; i++){
                 //         particle_system_inst.particles.forEach(p => {
                 //             p.sayUtterances(ParticleSystem.UtterancesLibrary.rick_utterances, 2000);
                 //         });

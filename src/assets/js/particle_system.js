@@ -111,14 +111,12 @@ class Particle{
         this._z_generator = new ValueNoiseGenerator(10, 100);
         this._z = this._z_generator.getValue()+10;
         //this.brightness = new ValueNoiseGenerator(1, 100);
-
         this._theta_generator = new ValueNoiseGenerator(Math.PI * 2, 500);
-        //console.log(this._theta_generator.getValue());
-        this._theta = this._theta_generator.getValue();//Math.random() * Math.PI * 2;
+        this._theta = this._theta_generator.getValue();
+        
         this.element = document.createElement('div');
         this.element.classList.add('particle-system-particle');
-        this.element.style.left = this._x + 'px';
-        this.element.style.top = this._y + 'px';
+        this.element.style.transform = `translate(${this._x}px, ${this._y}px)`;
         this.element.style.width = this._z + 'px';
         this.element.style.height = this._z + 'px';
         this.element.style.opacity = Math.min(2/(this._z), 1);
@@ -138,8 +136,7 @@ class Particle{
         if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.element, this._x, this._y, 1000);
 
         //actual UI update
-        this.element.style.left = this._x + 'px';
-        this.element.style.top = this._y + 'px';
+        this.element.style.transform = `translate(${this._x}px, ${this._y}px)`;
         this.element.style.width = this._z + 'px';
         this.element.style.height = this._z + 'px';
         this.element.style.opacity = Math.min(2/(this._z), 1);
