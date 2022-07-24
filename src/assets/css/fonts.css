@@ -1,6 +1,5 @@
 /*fonts + effects*/
 /*use a font*/
-* {-webkit-font-smoothing: antialiased;}
 @font-face {
     font-family: 'Roboto Mono';
     font-display: swap;
