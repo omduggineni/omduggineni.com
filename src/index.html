@@ -18,7 +18,7 @@
         <meta name="description" content="Om Duggineni's Website!">
         <meta charset="UTF-8">
     </head>
-    <body class="bg-black">
+    <body class="bg-black text-white font-monospace">
         <div class="particle-system overflow-hidden" id="particle_system">
             <!--The particle system in the background spawns elements in this div-->
         </div>
@@ -33,42 +33,53 @@
             </div>
         </div>
         <div class="flex overflow-hidden w-screen h-screen necessary-for-title-animation">
-            <div class="h-auto w-auto self-center mobile-sm:px-6 mobile:px-8 desktop:px-16 title-drop-shadow text-white text-xl necessary-for-title-animation">
-                <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl font-monospace necessary-for-title-animation" id="page-title">Om Duggineni &#9608;</h1>
+            <div class="h-auto w-auto self-center mobile-sm:px-6 mobile:px-8 desktop:px-16 title-drop-shadow text-xl necessary-for-title-animation">
+                <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl necessary-for-title-animation" id="page-title">Om Duggineni &#9608;</h1>
                 </br>
-                <p class="font-monospace mobile:text-xl desktop:text-3xl">bio/cs enthusiast, tjhsst '23</p>
+                <p class="mobile:text-xl desktop:text-3xl">bio/cs enthusiast, tjhsst '23</p>
             </div>
         </div>
-        <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-white text-xl" id="about-me">
+        <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-xl" id="about-me">
             <div class="flex h-auto w-auto self-center px-16 py-16">
                 <div class="w-[50%] h-auto py-16 block">
-                    <h1 class="text-8xl font-monospace">About</h1>
+                    <h1 class="text-8xl">About</h1>
                     </br>
-                    <p class="font-monospace text-3xl">test text</p>
+                    <p class="text-3xl">test text</p>
                 </div>
                 <div class="w-[50%] h-auto relative z-0">
-                    <div class="absolute inset-0 w-500 h-500 m-0 border-solid border-2 z-[-1]" style="transform: translate(5px, -5px);"></div>
+                    <div class="absolute inset-0 m-0 border-solid border-2 z-[-1]" style="transform: translate(5px, -5px);"></div>
                     <div class="w-auto h-auto border-solid border-2 z-0">
-                        <picture>
+                        <picture class="w-[100%] h-auto">
                             <source srcset="assets/images/profile_pic.jpg?as=avif" type="image/avif">
                             <source srcset="assets/images/profile_pic.jpg?as=webp" type="image/webp">
                             <source srcset="assets/images/profile_pic.jpg" type="image/jpeg">
-                            <img src="assets/images/profile_pic.jpg?as=webp" alt="An image of Om Duggineni">
+                            <img class="w-[100%] h-auto" src="assets/images/profile_pic.jpg?as=webp" alt="An image of Om Duggineni">
                         </picture>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex overflow-hidden w-screen h-screen" id="my-projects">
-            <!--Cards-->
-
+        <div class="overflow-hidden w-screen h-auto" id="my-projects">
+            <div class="align-center w-auto h-auto self-center px-16 py-8">
+                <h1 class="text-8xl">Projects</h1>
+            </div>
+            <div class="px-16 py-8 flex flex-col w-[100%] h-auto">
+                <div class="px-10 py-6 flex flex-ro w-[100%] h-auto">
+                    <div class="border-2 border-solid border-white w-[50%]">
+                        <h2>Project 1</h2>
+                    </div>
+                    <div class="border-2 border-solid border-white w-[50%]">
+                        <h2>Project 1</h2>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--<div class="flex overflow-hidden w-screen h-screen" id="section-4">
             <!-\-Section 4-\->
         </div>-->
         <div class="w-screen h-[6rem] bg-blue-900 flex flex-col" id="contact-me">
-            <div class="text-white text-left text-4xl px-8" style="line-height: 6rem;">
-                <span class="font-bold text-white">
+            <div class="text-left text-4xl px-8" style="line-height: 6rem;">
+                <span class="font-bold">
                     <span class="px-2" title="in this order of preference">Get in Touch!:</span>
                     <a href="mailto:om.psnom@gmail.com" class="px-2 fa">
                         &#xf0e0; <!-- fontawesome -> envelope -->
