@@ -10,6 +10,7 @@
             @import url("assets/css/scrollpill/scrollpill.css");
             @import url("assets/css/homepage/title_animation.css");
             @import url("assets/css/particle_system.css");
+            @import url("assets/css/stack_like_border.css");
         </style>
         <!--<script src="https://cdn.tailwindcss.com/"></script>-->
         <link rel="shortcut icon" href="favicon.ico"/>
@@ -41,35 +42,84 @@
         </div>
         <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-xl" id="about-me">
             <div class="flex h-auto w-auto self-center px-16 py-16">
-                <div class="w-[50%] h-auto py-16 block">
+                <div class="w-[50%] h-auto py-16 desktop-sm:pr-10 block">
                     <h1 class="text-8xl">About</h1>
                     </br>
-                    <p class="text-3xl">test text</p>
+                    <p class="text-xl">Om Duggineni is a high school senior and thoroughly enjoys everything science and computer science. He is passionate about the possibilities at the intersection of biology, computer science, and engineering. He is conducting research whenever possible and pursuing research opportunities and mentorship. When he is not into science, he loves to bike, take photos with his mirrorless camera, read, ǝpoɔıun&nbsp;ʞɔɐɥ, sing, and vacation with family. He also likes listening to podcasts - his favorite podcast is Hidden Brain.</p>
                 </div>
-                <div class="w-[50%] h-auto relative z-0">
-                    <div class="absolute inset-0 m-0 border-solid border-2 z-[-1]" style="transform: translate(5px, -5px);"></div>
-                    <div class="w-auto h-auto border-solid border-2 z-0">
-                        <picture class="w-[100%] h-auto">
+                <div class="block w-[50%] h-auto relative z-0">
+                    <div class="w-auto h-auto border-solid border-2 z-0" style="--stack-shift-x: 8px; --stack-shift-y: -8px;">
+                        <picture class="w-[100%] stack-like-border" width="1896" height="2048">
                             <source srcset="assets/images/profile_pic.jpg?as=avif" type="image/avif">
                             <source srcset="assets/images/profile_pic.jpg?as=webp" type="image/webp">
                             <source srcset="assets/images/profile_pic.jpg" type="image/jpeg">
-                            <img class="w-[100%] h-auto" src="assets/images/profile_pic.jpg?as=webp" alt="An image of Om Duggineni">
+                            <img class="w-[100%]" src="assets/images/profile_pic.jpg" alt="An image of Om Duggineni">
                         </picture>
                     </div>
+                    <div class="w-auto h-auto" style="min-height:max-content;"></div>
                 </div>
             </div>
         </div>
         <div class="overflow-hidden w-screen h-auto" id="my-projects">
+            <style>
+                .project-row {
+                    @apply px-10 py-0 flex desktop-sm:flex-row mobile:flex-col w-[100%] h-auto;
+                }
+                .project-card {
+                    @apply relative border-2 border-solid border-white desktop-sm:w-[50%] mobile:w-[100%] desktop-sm:mx-4 mobile:my-4 px-8 py-4;
+                    @apply bg-black;
+                    box-shadow: 0px 0px 15px #0066ff96;
+                }
+                @keyframes emphasize-project-card{
+                    0%{
+                        box-shadow: 0px 0px 15px #0066ff96;
+                    }
+                    100%{
+                        box-shadow: 0px 0px 20px #0066ffff;
+                    }
+                }
+                .project-card:hover {
+                    animation: emphasize-project-card 0.1s ease-in-out forwards;
+                }
+            </style>
             <div class="align-center w-auto h-auto self-center px-16 py-8">
                 <h1 class="text-8xl">Projects</h1>
             </div>
-            <div class="px-16 py-8 flex flex-col w-[100%] h-auto">
-                <div class="px-10 py-6 flex flex-ro w-[100%] h-auto">
-                    <div class="border-2 border-solid border-white w-[50%]">
-                        <h2>Project 1</h2>
+            <div class="px-16 pt-8 pb-16 flex flex-col w-[100%] h-auto">
+                <div class="project-row">
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 1</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
                     </div>
-                    <div class="border-2 border-solid border-white w-[50%]">
-                        <h2>Project 1</h2>
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 2</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                </div>
+                <div class="project-row">
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 3</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 4</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                </div>
+                <div class="project-row">
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 5</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 6</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
                     </div>
                 </div>
             </div>
