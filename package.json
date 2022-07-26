@@ -15,6 +15,7 @@
     "serve1": "http-server src/ --gzip --brotli",
     "serve2": "parcel build src/index.html && http-server dist/ --gzip --brotli",
     "build": "parcel build src/index.html",
-    "watch": "parcel watch src/index.html"
+    "watch": "parcel watch src/index.html",
+    "subset-icons": "node utils/subset_fontawesome/subset_fontawesome.js"
   }
 }
