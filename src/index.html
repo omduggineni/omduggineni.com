@@ -42,7 +42,7 @@
         <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-xl" id="about-me">
             <div class="flex desktop-sm:flex-row mobile:flex-col-reverse h-auto w-auto self-center desktop-sm:px-16 mobile:px-8 py-16">
                 <div class="desktop-sm:w-[50%] mobile:w-[100%] h-auto py-16 desktop-sm:pr-10 block">
-                    <h1 class="text-8xl">About</h1>
+                    <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">About</h1>
                     </br>
                     <p class="text-xl">Om Duggineni is a high school senior and thoroughly enjoys everything science and computer science. He is passionate about the possibilities at the intersection of biology, computer science, and engineering. He is conducting research whenever possible and pursuing research opportunities and mentorship. When he is not into science, he loves to bike, take photos with his mirrorless camera, read, ǝpoɔıun&nbsp;ʞɔɐɥ, sing, and vacation with family. He also likes listening to podcasts - his favorite podcast is Hidden Brain.</p>
                 </div>
@@ -66,7 +66,7 @@
                     @apply px-10 py-0 flex desktop-sm:flex-row mobile:flex-col w-[100%] h-auto;
                 }
                 .project-card {
-                    @apply relative border-2 border-solid border-white desktop-sm:w-[50%] mobile:w-[100%] desktop-sm:mx-4 mobile:my-4 px-8 py-4;
+                    @apply relative border-2 border-solid border-white desktop-sm:w-[50%] mobile:w-[100%] desktop-sm:mx-4 mobile:my-4 desktop-sm:px-8 mobile:px-4 py-4;
                     @apply bg-black;
                     box-shadow: 0px 0px 15px #0066ff96;
                 }
@@ -83,9 +83,9 @@
                 }
             </style>
             <div class="align-center w-auto h-auto self-center px-16 py-8">
-                <h1 class="text-8xl">Projects</h1>
+                <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">Projects</h1>
             </div>
-            <div class="px-16 pt-8 pb-16 flex flex-col w-[100%] h-auto">
+            <div class="desktop-sm:px-16 mobile:px-6 pt-8 pb-16 flex flex-col w-[100%] h-auto">
                 <div class="project-row">
                     <div class="project-card">
                         <h2 class="text-3xl pb-3">Project 1</h2>
@@ -130,7 +130,7 @@
         <div class="w-screen h-[6rem] bg-blue-900 flex flex-col" id="contact-me">
             <div class="text-left text-4xl px-8" style="line-height: 6rem;">
                 <span class="font-bold">
-                    <span class="px-2" title="in this order of preference">Get in Touch!:</span>
+                    <span class="px-2 desktop-sm:inline hidden" title="in this order of preference">Get in Touch!:</span>
                     <a href="mailto:om.psnom@gmail.com" class="px-2 fa">
                         &#xf0e0; <!-- fontawesome -> envelope -->
                     </a>
