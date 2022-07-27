@@ -92,6 +92,7 @@ html {
     font-size: 30px !important;
     /*border: 0.15rem solid white;*/
     position: absolute;
+    white-space: nowrap;
     z-index: 100;
     top: 0em;
     right: 2em;
@@ -100,11 +101,29 @@ html {
     padding: 1rem;
     margin-top: 0;
     color: white;
-    white-space: nowrap;
     background-color: black;
     transform: translateY(-1rem);
 }
+@media screen and (max-width: 720px) {
+    .scrollpill-navbar{
+        white-space: normal;
+        background-color: black !important;
+    }
+    .scrollpill-navbar a{
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        z-index: inherit;
+        background-color: rgba(0,0,0,0) !important;
+    }
+    .scrollpill-navbar a span{
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        z-index: inherit;
+        background-color: rgba(0,0,0,0) !important;
+    }
+}
 .scrollpill-navbar a{
+    white-space: nowrap;
     display: inline;
     margin: 0;
     padding: 1rem;
