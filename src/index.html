@@ -47,8 +47,8 @@
                     <p class="text-xl">Om Duggineni is a high school senior and thoroughly enjoys everything science and computer science. He is passionate about the possibilities at the intersection of biology, computer science, and engineering. He is conducting research whenever possible and pursuing research opportunities and mentorship. When he is not into science, he loves to bike, take photos with his mirrorless camera, read, ǝpoɔıun&nbsp;ʞɔɐɥ, sing, and vacation with family. He also likes listening to podcasts - his favorite podcast is Hidden Brain.</p>
                 </div>
                 <div class="block desktop-sm:w-[50%] mobile:w-[100%] h-auto relative z-0">
-                    <div class="w-auto outline outline-solid outline-2 outline-offset-0 z-0 m-0 p-0" style="max-height:min-content; transform:translate(8px, -8px)">
-                        <div class="w-auto outline outline-solid outline-2 outline-offset-0 z-0 inset-0 m-0 p-0" style="max-height:min-content; transform:translate(-8px, 8px)">
+                    <div class="w-auto outline outline-solid outline-2 outline-offset-0 z-0 m-0 p-0 about-img-card-stack-container">
+                        <div class="w-auto outline outline-solid outline-2 outline-offset-0 z-0 inset-0 m-0 p-0 about-img-card-stack-img">
                             <picture class="w-[100%]" width="1896" height="2048">
                                 <source srcset="assets/images/profile_pic.jpg?as=avif" type="image/avif">
                                 <source srcset="assets/images/profile_pic.jpg?as=webp" type="image/webp">
@@ -88,21 +88,17 @@
             <div class="desktop-sm:px-16 mobile:px-6 pt-8 pb-16 flex flex-col w-[100%] h-auto">
                 <div class="project-row">
                     <div class="project-card">
-                        <h2 class="text-3xl pb-3">Project 1</h2>
-                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
-                        <p class="text-xl">test text</p>
-                    </div>
-                    <div class="project-card">
-                        <h2 class="text-3xl pb-3">Project 2</h2>
-                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
-                        <p class="text-xl">test text</p>
-                    </div>
-                </div>
-                <div class="project-row">
-                    <div class="project-card">
-                        <h2 class="text-3xl pb-3">Project 3</h2>
-                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
-                        <p class="text-xl">test text</p>
+                        <h2 class="text-3xl pb-3">Protein Folding</h2>
+                        <picture width="1600" height="1200">
+                            <source srcset="assets/images/projects/protein-structure-prediction.png?as=avif" type="image/avif">
+                            <source srcset="assets/images/projects/protein-structure-prediction.png?as=webp" type="image/webp">
+                            <source srcset="assets/images/projects/protein-structure-prediction.png?as=jpeg" type="image/jpeg">
+                            <source srcset="assets/images/projects/protein-structure-prediction.png" type="image/png">
+                            <img src="assets/images/projects/protein-structure-prediction.png" alt="An image of a protein structure prediction" width="1600" height="1200">
+                        </picture>
+                        <p class="text-xl">Through high school, I've done a variety of experiements on protein folding.</p>
+                        <p class="text-xl">In 10th grade, I used a LSTM-based neural network to predict the secondary structure of a protein based on it's amino acid sequence. I was able to achieve about 80% accuracy on the validation set.</p>
+                        <p class="text-xl pb-4">In 11th grade, I took this a step further by using a related technique to predict how mutations to the Sars-CoV-2 virus would affect the virus's ability to avoid human antibodies against Sars-CoV-2. I was able to successfully predict future variants of the virus that may be better able to avoid the human immune system.</p>
                     </div>
                     <div class="project-card">
                         <h2 class="text-3xl pb-3">AquaBot</h2>
@@ -176,6 +172,18 @@
                         </a>
                     </div>
                 </div>
+                <!-- <div class="project-row">
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 1</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                    <div class="project-card">
+                        <h2 class="text-3xl pb-3">Project 2</h2>
+                        <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto">
+                        <p class="text-xl">test text</p>
+                    </div>
+                </div> -->
             </div>
         </div>
         <!--<div class="flex overflow-hidden w-screen h-screen" id="section-4">
