@@ -104,7 +104,7 @@ html {
     background-color: black;
     transform: translateY(-1rem);
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 730px) {
     .scrollpill-navbar{
         white-space: normal;
         background-color: black !important;
