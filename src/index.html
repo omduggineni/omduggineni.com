@@ -70,7 +70,7 @@
                     @apply bg-black;
                     box-shadow: 0px 0px 15px #0066ff96;
                 }
-                @keyframes emphasize-project-card{
+                @keyframes emphasize-shadow{
                     0%{
                         box-shadow: 0px 0px 15px #0066ff96;
                     }
@@ -79,7 +79,13 @@
                     }
                 }
                 .project-card:hover {
-                    animation: emphasize-project-card 0.1s ease-in-out forwards;
+                    animation: emphasize-shadow 0.1s ease-in-out forwards;
+                }
+                .shadow-change-hover{
+                    box-shadow: 0px 0px 15px #0066ff96;
+                }
+                .shadow-change-hover:hover{
+                    animation: emphasize-shadow 0.1s ease-in-out forwards;
                 }
             </style>
             <div class="align-center w-auto h-auto self-center px-16 py-8">
@@ -113,7 +119,7 @@
                         </div>
                         <p class="text-xl pb-4">AquaBot is an inexpensive, automated stream-monitoring robot built to measure chemical characteristics in waterways such as dissolved oxygen, pH, temperature, and turbidity to identify polluted areas in streams. Our prototype was able to successfully measure temperature and turbidity data in a local lake and transmit the results to a nearby phone via Bluetooth for logging. With AquaBot, we planned to disseminate water quality information in real time to enable conservation action and increase public awareness about stream health using robotics.</p>
                         <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Watch the Video
                             </button>
                         </a>
@@ -133,12 +139,12 @@
                         </div>
                         <p class="text-xl pb-4">OtoFind is a smartphone-based otoscope which leverages the power of the smartphone’s inbuilt camera and the power of offline machine learning to quickly and accurately diagnose Otitis Media. Our prototype was capable of achieving 84% accuracy when diagnosing ear infections. This is an inexpensive solution that provides an early, accurate diagnosis to patients with Otitis Media and other ear infections.</p>
                         <a href="https://github.com/omduggineni/otofind" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Source Code
                             </button>
                         </a>
                         <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Watch the Video
                             </button>
                         </a>
@@ -154,19 +160,19 @@
                                 <img src="./assets/images/projects/math-quiz.png" alt="MathQuiz! logo" width="512" height="512">
                             </picture>
                         </div>
-                        <p class="text-xl pb-4">MathQuiz! is available as a native Android app and cross-platform web app. The web app has had over 800,000 users.</p>
+                        <p class="desktop-sm:text-xl pb-4">MathQuiz! is available as a native Android app and cross-platform web app. The web app has had over 800,000 users.</p>
                         <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Source Code
                             </button>
                         </a>
                         <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Android
                             </button>
                         </a>
                         <a href="https://math-quiz.github.io" class="inline-block text-white text-xl my-1">
-                            <button class="border-2 border-solid border-white px-4 py-2">
+                            <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover">
                                 Web
                             </button>
                         </a>
