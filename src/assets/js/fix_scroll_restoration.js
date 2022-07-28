@@ -19,6 +19,7 @@ window.addEventListener('pageshow', function (){
     const pathname = window.location.pathname;
     const serializedPathname = serializePathname(pathname);
     const scrollPosition = sessionStorage.getItem(serializedPathname+"_savedScrollPosition");
+    //console.log(scrollPosition);
     if (scrollPosition) {
         window.scrollTo(0, scrollPosition);
     }
