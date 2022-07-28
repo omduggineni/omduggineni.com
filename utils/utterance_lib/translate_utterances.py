@@ -2,6 +2,7 @@ import sys;
 
 input_data = open("rick.txt", "rt").read().strip().splitlines()
 input_data = [line.strip().split(" ") for line in input_data]
+input_data = [[line[0], " ".join(line[1:])] for line in input_data]
 input_data = [[line[0].strip(), line[1].strip()] for line in input_data if (len(line) > 1 and line[1].strip() != "#")]
 
 def translate_timestamp(timestamp):

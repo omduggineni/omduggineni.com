@@ -19,7 +19,10 @@
         <meta charset="UTF-8">
     </head>
     <body class="bg-black text-white font-monospace">
-        <div class="particle-system overflow-hidden" id="particle_system">
+        <svg class="particle-system overflow-hidden" id="particle_system">
+            <!--The particle system in the background spawns elements in this svg-->
+        </svg>
+        <div class="particle-system overflow-hidden" id="particle_system_text">
             <!--The particle system in the background spawns elements in this div-->
         </div>
         <div id="scrollpill" class="scrollpill scrollpill-at-top-first" style="position:'fixed'; top:0%">
@@ -224,13 +227,11 @@
                 new ScrollPill.ScrollPill("scrollpill");
             });
             particle_system.then((ParticleSystem)=>{
-                let particle_system_inst = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), 200);
+                let particle_system_inst = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), document.getElementById("particle_system_text"), 200);
                 // setTimeout(()=>{
-                //     for(let i = 0; i < 1; i++){
-                //         particle_system_inst.particles.forEach(p => {
-                //             p.sayUtterances(ParticleSystem.UtterancesLibrary.rick_utterances, 2000);
-                //         });
-                //     }
+                //     particle_system_inst.particles.forEach(p => {
+                //         p.sayUtterances(ParticleSystem.UtterancesLibrary.rick_utterances, 2000);
+                //     });
                 // }, 1000);
             })
         });

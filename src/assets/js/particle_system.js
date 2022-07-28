@@ -41,7 +41,7 @@ const particleSay = (text, parentElement, x, y, lifetime) => {
 }
 const particlesSay = (text, particles, lifetime) => {
     let elements = [];
-    let parentElement = particles[0]._parentSystem.element;
+    let parentElement = particles[0]._parentSystem.text_element;
     for(let i = 0; i < particles.length; i++){
         let element = document.createElement('span');
         element.classList.add('particle-system-text');
@@ -99,7 +99,7 @@ class UtterancesObject{
 }
 
 const UtterancesLibrary = {
-    rick_utterances: new UtterancesObject([["We're", 0.3800000000000001], ['no', 0.2699999999999998], ['strangers', 0.24], ['to', 0.29000000000000004], ['love', 2.83], ['You', 0.33000000000000007], ['know', 0.22999999999999954], ['the', 0.25], ['rules', 0.6900000000000004], ['and', 0.3600000000000003], ['so', 0.40999999999999925], ['do', 0.3600000000000003], ['I', 1.63], ['A', 0.2900000000000009], ['full', 0.21999999999999886], ["commitment's", 0.7699999999999996], ['what', 0.25], ["I'm", 0.5400000000000009], ['thinking', 0.3200000000000003], ['of', 1.8100000000000005], ['you', 0.3299999999999983], ["wouldn't", 0.4800000000000004], ['get', 0.2599999999999998], ['this', 0.25], ['from', 0.46000000000000085], ['any', 0.40000000000000036], ['other', 0.21999999999999886], ['guy', 0.26000000000000156], ['I', 0.25], ['how', 0.9599999999999973], ["I'm", 1.3000000000000007], ['feeling', 0.3500000000000014], ['gotta', 0.259999999999998], ['make', 0.25], ['you', 0.2900000000000027], ['understand', 0.7899999999999991], ['never', 0.41999999999999815], ['gonna', 1.620000000000001], ['give', 0.39000000000000057], ['you', 0.23999999999999844], ['up', 0.2700000000000031], ['never', 0.4299999999999997], ['gonna', 0.34999999999999787], ['let', 0.2699999999999996], ['you', 0.6900000000000013], ['down', 0.23999999999999844], ['never', 0.18000000000000327], ['gonna', 0.2699999999999996], ['run', 0.2699999999999996], ['around', 0.4299999999999997], ['and', 0.7399999999999984], ['desert', 0.23000000000000043], ['you', 0.16000000000000014], ['never', 0.3200000000000003], ['hi', 0.25], ['hi', 0.35999999999999943], ['hi', 0.6900000000000013], ['hi', 0.259999999999998], ['hi', 0.15000000000000213], ['hi', 0.16000000000000014], ['hi', 0.17999999999999972], ['hi', 0.35999999999999943], ['hi', 0.3500000000000014], ['hi', 0.48999999999999844], ['hi', 0.5000000000000036], ['hi', 0.3399999999999963], ['hi', 0.39000000000000057], ['hi', 1.1400000000000006], ['hi', 0.240000000000002], ['hi', 0.17999999999999972], ['hi', 0.28999999999999915], ['hi', 0.28999999999999915], ['hi', 0.36999999999999744], ['hi', 0.7899999999999991], ['hi', 0.2600000000000051], ['hi', 0.14999999999999858], ['hi', 0.269999999999996], ['hi', 0.37000000000000455], ['hi', 0.3200000000000003], ['hi', 0.7299999999999969], ['hi', 0.21000000000000085], ['hi', 0.14000000000000057], ['hi', 0.0799999999999983], ['hi', 0.20000000000000284], ['hi', 0.4200000000000017], ['hi', 0.29999999999999716], ['hi', 0.6099999999999994], ['hi', 0.4200000000000017], ['hi', 0.3399999999999963], ['hi', 0.4299999999999997], ['hi', 1.0]]),
+    rick_utterances: new UtterancesObject([["We're", 0.3800000000000001], ['no', 0.2699999999999998], ['strangers', 0.24], ['to', 0.29000000000000004], ['love', 2.83], ['You', 0.33000000000000007], ['know', 0.22999999999999954], ['the', 0.25], ['rules', 0.6900000000000004], ['and', 0.3600000000000003], ['so', 0.40999999999999925], ['do', 0.3600000000000003], ['I', 1.63], ['A', 0.2900000000000009], ['full', 0.21999999999999886], ["commitment's", 0.5099999999999998], ['what', 0.2599999999999998], ["I'm", 0.7900000000000009], ['thinking', 0.3200000000000003], ['of', 1.8100000000000005], ['you', 0.3299999999999983], ["wouldn't", 0.4800000000000004], ['get', 0.2599999999999998], ['this', 0.25], ['from', 0.46000000000000085], ['any', 0.40000000000000036], ['other', 0.4800000000000004], ['guy', 1.2099999999999973], ['I', 1.3000000000000007], ['just', 0.3500000000000014], ['wanna', 0.259999999999998], ['tell', 0.25], ['you', 0.2900000000000027], ['how', 0.5399999999999991], ["I'm feeling gotta make you understand", 0.25], ['never', 0.41999999999999815], ['gonna', 1.620000000000001], ['give', 0.39000000000000057], ['you', 0.23999999999999844], ['up', 0.2700000000000031], ['never', 0.4299999999999997], ['gonna', 0.34999999999999787], ['let', 0.2699999999999996], ['you', 0.6900000000000013], ['down', 0.23999999999999844], ['never', 0.18000000000000327], ['gonna', 0.2699999999999996], ['run', 0.2699999999999996], ['around', 0.4299999999999997], ['and', 0.7399999999999984], ['desert', 0.23000000000000043], ['you', 0.16000000000000014], ['never', 0.3200000000000003], ['hi', 0.25], ['hi', 0.35999999999999943], ['hi', 0.6900000000000013], ['hi', 0.259999999999998], ['hi', 0.15000000000000213], ['hi', 0.16000000000000014], ['hi', 0.17999999999999972], ['hi', 0.35999999999999943], ['hi', 0.3500000000000014], ['hi', 0.48999999999999844], ['hi', 0.5000000000000036], ['hi', 0.3399999999999963], ['hi', 0.39000000000000057], ['hi', 1.1400000000000006], ['hi', 0.240000000000002], ['hi', 0.17999999999999972], ['hi', 0.28999999999999915], ['hi', 0.28999999999999915], ['hi', 0.36999999999999744], ['hi', 0.7899999999999991], ['hi', 0.2600000000000051], ['hi', 0.14999999999999858], ['hi', 0.269999999999996], ['hi', 0.37000000000000455], ['hi', 0.3200000000000003], ['hi', 0.7299999999999969], ['hi', 0.21000000000000085], ['hi', 0.14000000000000057], ['hi', 0.0799999999999983], ['hi', 0.20000000000000284], ['hi', 0.4200000000000017], ['hi', 0.29999999999999716], ['hi', 0.6099999999999994], ['hi', 0.4200000000000017], ['hi', 0.3399999999999963], ['hi', 0.4299999999999997], ['hi', 1.0]]),
 };
 
 class Particle{
@@ -114,13 +114,12 @@ class Particle{
         this._theta_generator = new ValueNoiseGenerator(Math.PI * 2, 500);
         this._theta = this._theta_generator.getValue();
         
-        this.element = document.createElement('div');
-        this.element.classList.add('particle-system-particle');
-        this.element.style.transform = `translate(${this._x}px, ${this._y}px)`;
-        this.element.style.width = this._z + 'px';
-        this.element.style.height = this._z + 'px';
-        this.element.style.opacity = Math.min(2/(this._z), 1);
-        //this.element.style.filter = 'blur(' + Math.max(this._z-8, 0)/4 + 'px)';
+        this.element = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        this.element.setAttribute("cx", this._x);
+        this.element.setAttribute("cy", this._y);
+        this.element.setAttribute("r", this._z/2);
+        this.element.setAttribute("opacity", Math.min(2/(this._z), 1));
+        this.element.setAttribute("fill", "#ffff00");
         parentElement.appendChild(this.element);
     }
     update(){
@@ -133,14 +132,13 @@ class Particle{
         this._speed = Particle.SPEED + (this._speed-Particle.SPEED) * (this.SPEED > Particle.SPEED ? 0.998 : 0.95);
         this._z = this._z_generator.getValue()+10;
 
-        if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.element, this._x, this._y, 1000);
+        if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.text_element, this._x, this._y, 1000);
 
         //actual UI update
-        this.element.style.transform = `translate(${this._x}px, ${this._y}px)`;
-        this.element.style.width = this._z + 'px';
-        this.element.style.height = this._z + 'px';
-        this.element.style.opacity = Math.min(2/(this._z), 1);
-        //this.element.style.filter = 'blur(' + this._z-8 + 'px)';
+        this.element.setAttribute("cx", this._x);
+        this.element.setAttribute("cy", this._y);
+        this.element.setAttribute("r", this._z/2);
+        this.element.setAttribute("opacity", Math.min(2/(this._z), 1));
     }
     sayUtterances(utterances, delay_start){
         //console.log(utterances);
@@ -148,31 +146,23 @@ class Particle{
         utterances.speakIn(delay_start);
     }
     raycast(origin_x, origin_y, direction_x, direction_y){
-        let this_x = this._x;
-        let this_y = this._y;
-        let this_radius = this._z/2;
-        let a = direction_x * direction_x + direction_y * direction_y;
-        let b = 2 * (origin_x * direction_x + origin_y * direction_y);
-        let c = origin_x * origin_x + origin_y * origin_y - this_radius * this_radius;
-        let discriminant = b * b - 4 * a * c;
-        if(discriminant < 0) return -1;
-        let t = (-b - Math.sqrt(discriminant)) / (2 * a);
-        if(t < 0) return -1;
-        return t;
+        //TODO: implement raycast
     }
 }
 Particle.SPEED=1;
 Particle.WIDTH=15;
 class ParticleSystem{
-    constructor(parentElement, numParticles){
+    constructor(parentElement, parentTextElement, numParticles){
         this._ticknum = 0;
 
         this.width = window.innerWidth-Particle.WIDTH;
         this.height = document.body.scrollHeight-Particle.WIDTH;
 
         parentElement.style.height = this.height + 'px';
+        parentTextElement.style.height = this.height + 'px';
 
         this.element = parentElement;
+        this.text_element = parentTextElement;
 
         this.particles = [];
         let addParticle = ()=>{
@@ -189,6 +179,7 @@ class ParticleSystem{
         this.width = window.innerWidth;
         this.height = document.body.scrollHeight;
         this.element.style.height = this.height + 'px';
+        this.text_element.style.height = this.height + 'px';
     }
     update(){
         for(let i = 0; i < this.particles.length; i++){
