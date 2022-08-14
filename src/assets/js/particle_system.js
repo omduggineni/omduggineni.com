@@ -128,7 +128,7 @@ class Particle{
         this._speed = Particle.SPEED + (this._speed-Particle.SPEED) * (this.SPEED > Particle.SPEED ? 0.998 : 0.95);
         this._z = this._z_generator.getValue()+10;
 
-        if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.text_element, this._x, this._y, 1000);
+        //if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.text_element, this._x, this._y, 1000);
 
         //actual UI update
         this.element.setAttribute("cx", this._x);
