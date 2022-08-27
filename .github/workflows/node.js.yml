@@ -42,7 +42,7 @@ jobs:
     - run: rm -rf ..?* .[!.]* *
     - run: mv ../.git .
     - run: mv ../dist/* .
-    - run: if [ ! -f / path / to /file ] false else true fi
+    - run: if [ ! -f CNAME ] false else true fi
     - run: echo "omduggineni.com" > CNAME
     - run: git add -v .
     - run: git config --global user.name "GitHub Actions"
