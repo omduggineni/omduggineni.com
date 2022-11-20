@@ -80,36 +80,14 @@ const executeTitleAnimation = async () => {
             TitleElement.appendChild(TitleTypingElement);
             setInterval(titleAnimationToggleTypingIndicatorHandler(TitleTypingElement), 1000);
 
-            if (localStorage.getItem("title-animation-done") !== "true" && !(localStorage.getItem("title-animation-version") || false) && parseInt(localStorage.getItem("title-animation-version")) !== titleAnimationVersion) {
-                await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length - 1], 70, false);
-                titleAnimationBringIntoView();
-                localStorage.setItem("title-animation-done", "true");
-                localStorage.setItem("title-animation-version", titleAnimationVersion + "");
-            } else {
-                titleAnimationBringIntoView();
-            }
-
+            titleAnimationBringIntoView();
+            await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length - 1], 70, false);
             resolve();
+
             let elements_necessary_for_title_animation = document.body.querySelectorAll(".necessary-for-title-animation");
             elements_necessary_for_title_animation.forEach(function (element) {
                 element.classList.remove("necessary-for-title-animation");
             });
-
-            // let TitleTextElementsFront = TitleTextElements;
-            // let TitleTextElementsBack = [];
-
-            // //interleave TitleTextElementsBack into children of TitleElement
-            // for(let i = 0; i < TitleTextElementsFront.length; i++){
-            //     let TitleTextElement = TitleTextElementsFront[i];
-            //     TitleTextElement.classList.add(titleAnimationStyles.not_visible);
-            //     TitleTextElement.classList.remove(titleAnimationStyles.bring_into_view);
-            //     TitleTextElementsBack.push(TitleTextElement);
-            //     TitleElement.appendChild(TitleTextElement);
-            // }
-
-            await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length - 1], 70, false);
-            await sleep(1000);
-
         });
     });
     return promise;
