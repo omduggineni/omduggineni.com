@@ -85,6 +85,8 @@ const executeTitleAnimation = async () => {
                 titleAnimationBringIntoView();
                 localStorage.setItem("title-animation-done", "true");
                 localStorage.setItem("title-animation-version", titleAnimationVersion + "");
+            } else {
+                titleAnimationBringIntoView();
             }
 
             resolve();
