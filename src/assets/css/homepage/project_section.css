@@ -1,0 +1,47 @@
+.project-row {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@media (max-width: --screen-width-desktop-sm) {
+    .project-row {
+        flex-direction: column;
+    }
+}
+
+/* prettier-ignore */
+.project-card {
+    @apply desktop:w-[50%] mobile:w-[100%] desktop-sm:mx-4 mobile:my-4 desktop-sm:px-8 mobile:px-4 py-4;
+    position: relative;
+    border: 2px solid white;
+    background-color: black;
+    box-shadow: 0px 0px 15px #0066ff96;
+}
+
+@keyframes emphasize-shadow {
+    0% {
+        box-shadow: 0px 0px 15px #0066ff96;
+    }
+
+    100% {
+        box-shadow: 0px 0px 20px #0066ffff;
+    }
+}
+
+.project-card:hover {
+    animation: emphasize-shadow 0.1s ease-in-out forwards;
+}
+
+.shadow-change-hover {
+    box-shadow: 0px 0px 15px #0066ff96;
+}
+
+.shadow-change-hover:hover {
+    animation: emphasize-shadow 0.1s ease-in-out forwards;
+}
