@@ -3,7 +3,7 @@ const titleAnimationVersion = 3;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 var TitleElement = null;
-var TitleAnimationTexts = ["science nerd ", "hardworking academic ", "amateur photographer ", "Om Duggineni "];
+var TitleAnimationTexts = ["science nerd ", "hardworking academic ", "music person ", "amateur photographer ", "Om Duggineni "];
 
 var titleAnimationHideEverything = function () {
     let elements_on_page = document.body.querySelectorAll(":not(.necessary-for-title-animation)");
