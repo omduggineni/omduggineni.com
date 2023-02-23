@@ -1,6 +1,8 @@
 @use "../utils/variables" as *;
+@use "../utils/fonts" as *;
 
 body {
     background-color: $backgroundColor;
     color: $textColor;
+    font-family: $defaultFont;
 }
