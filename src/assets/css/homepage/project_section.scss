@@ -41,12 +41,14 @@
 
     position: relative;
     border: 2px solid white;
-    background-color: black;
+    background-color: $backgroundColor;
     box-shadow: 0px 0px 15px #0066ff96;
 
     &:hover {
         animation: emphasize-shadow 0.1s ease-in-out forwards;
     }
+
+    h2 {}
 }
 
 .shadow-change-hover {

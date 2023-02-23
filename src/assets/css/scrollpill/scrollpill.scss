@@ -37,7 +37,7 @@ html {
         animation-iteration-count: 1 !important;
         right: 0px;
         font-size: 30px !important;
-        color: white !important;
+        color: $textColor !important;
         box-shadow: #0066ff 0px 0px 10px;
     }
 
@@ -46,7 +46,7 @@ html {
         animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
         animation-iteration-count: 1 !important;
         font-size: 30px;
-        color: white;
+        color: $textColor !important;
 
         &:hover {
             right: 0px !important;
@@ -58,7 +58,7 @@ html {
         width: 50px !important;
         height: 50px !important;
         font-size: 30px !important;
-        color: white !important;
+        color: $textColor !important;
     }
 
     &.scrollpill-at-middle {
@@ -71,7 +71,7 @@ html {
         animation-iteration-count: 1 !important;
         right: 0px;
         font-size: 30px !important;
-        color: white !important;
+        color: $textColor !important;
         box-shadow: #0066ff 0px 0px 10px;
     }
 }
@@ -94,7 +94,7 @@ html {
     animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
     animation-iteration-count: 1 !important;
     font-size: 30px !important;
-    color: white !important;
+    color: $textColor !important;
 }
 
 ::-webkit-scrollbar {
@@ -113,8 +113,8 @@ html {
     text-align: right;
     padding: 1rem;
     margin-top: 0;
-    color: white;
-    background-color: black;
+    color: $textColor;
+    background-color: $backgroundColor;
     transform: translateY(-1rem);
 
     a {
@@ -123,9 +123,6 @@ html {
         margin: 0;
         padding: 1rem;
         text-decoration: none;
-        background-color: black;
-        border-left: 0px solid black;
-        border-right: 0px solid black;
 
         &:hover {
             /* color: #0066ff; */
