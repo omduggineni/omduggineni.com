@@ -1,8 +1,6 @@
 const titleAnimationVersion = 3;
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-var TitleElement = null;
 var TitleAnimationTexts = ["science nerd ", "hardworking academic ", "music person ", "amateur photographer ", "Om Duggineni "];
 
 var titleAnimationHideEverything = function () {
