@@ -8,10 +8,10 @@
         @import url("assets/css/tailwind/tailwind_utilities.css");
         @import url("assets/css/tailwind/tailwind_components.css");
         @import url("assets/css/fonts.css");
-        @import url("assets/css/scrollpill/scrollpill.css");
-        @import url("assets/css/homepage/title_animation.css");
-        @import url("assets/css/particle_system.css");
-        @import url("assets/css/homepage/homepage.css");
+        @import url("assets/css/scrollpill/scrollpill.scss");
+        @import url("assets/css/homepage/title_animation.scss");
+        @import url("assets/css/particle_system.scss");
+        @import url("assets/css/homepage/homepage.scss");
     </style>
     <!--<script src="https://cdn.tailwindcss.com/"></script>-->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -51,12 +51,12 @@
             <span class="font-light">
                 <a href="#about-me" class="desktop-sm:inline mobile:block"><span class="text-blue font-medium">1.</span>
                     About</a>
-                <a href="#songs"><span class="text-blue font-medium">2.</span> Songs</a>
+                <!-- <a href="#songs"><span class="text-blue font-medium">2.</span> Songs</a> -->
                 <a href="#my-projects" class="desktop-sm:inline mobile:block"><span
-                        class="text-blue font-medium">3.</span> Projects</a>
+                        class="text-blue font-medium">2.</span> Projects</a>
                 <!--<a href="#my-photos" class="desktop-sm:inline mobile:block"><span class="text-blue font-medium">3.</span> Photos</a>-->
                 <a href="#contact-me" class="desktop-sm:inline mobile:block"><span
-                        class="text-blue font-medium">4.</span> Contact</a>
+                        class="text-blue font-medium">3.</span> Contact</a>
             </span>
         </div>
     </div>
@@ -66,7 +66,7 @@
             <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl necessary-for-title-animation"
                 id="page-title">Om Duggineni &#9608;</h1>
             </br>
-            <p class="mobile:text-xl desktop:text-3xl">bio/cs enthusiast, tjhsst '23</p>
+            <p class="mobile:text-xl desktop:text-3xl">bio/cs enthusiast, music person, tjhsst '23</p>
         </div>
     </div>
     <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-xl" id="about-me">
@@ -103,7 +103,7 @@
     </div>
     <div class="overflow-hidden w-screen h-auto" id="my-projects">
         <style>
-            @import url("assets/css/homepage/project_section.css");
+            @import url("assets/css/homepage/project_section.scss");
         </style>
         <div class="align-center w-auto h-auto self-center px-16 py-8">
             <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">
@@ -124,14 +124,14 @@
                         <img src="assets/images/projects/protein-structure-prediction.png"
                             alt="An image of a protein structure prediction" width="1600" height="1200">
                     </picture>
-                    <p class="text-xl">Through high school, I've done a variety of experiements on protein folding.</p>
-                    <p class="text-xl">In 10th grade, I used a LSTM-based neural network to predict the secondary
-                        structure of a protein based on it's amino acid sequence. I was able to achieve about 80%
-                        accuracy on the validation set.</p>
-                    <p class="text-xl pb-4">In 11th grade, I took this a step further by using a related technique to
-                        predict how mutations to the Sars-CoV-2 virus would affect the virus's ability to avoid human
-                        antibodies against Sars-CoV-2. I was able to successfully predict future variants of the virus
-                        that may be better able to avoid the human immune system.</p>
+                    <p>Through high school, I've done a variety of experiements on protein folding.</p>
+                    <p>In 10th grade, I used a LSTM-based neural network to predict the secondary structure of a protein
+                        based on it's amino acid sequence. I was able to achieve about 80% accuracy on the validation
+                        set.</p>
+                    <p class="pb-4">In 11th grade, I took this a step further by using a related technique to predict
+                        how mutations to the Sars-CoV-2 virus would affect the virus's ability to avoid human antibodies
+                        against Sars-CoV-2. I was able to successfully predict future variants of the virus that may be
+                        better able to avoid the human immune system.</p>
                 </div>
                 <div class="project-card">
                     <h2 class="text-3xl pb-3">AquaBot</h2>
@@ -144,14 +144,14 @@
                             <img src="./assets/images/projects/aquabot.png" alt="AquaBot" class="w-full h-auto">
                         </picture>
                     </div>
-                    <p class="text-xl pb-4">AquaBot is an inexpensive, automated stream-monitoring robot built to
-                        measure chemical characteristics in waterways such as dissolved oxygen, pH, temperature, and
-                        turbidity to identify polluted areas in streams. Our prototype was able to successfully measure
+                    <p class="pb-4">AquaBot is an inexpensive, automated stream-monitoring robot built to measure
+                        chemical characteristics in waterways such as dissolved oxygen, pH, temperature, and turbidity
+                        to identify polluted areas in streams. Our prototype was able to successfully measure
                         temperature and turbidity data in a local lake and transmit the results to a nearby phone via
                         Bluetooth for logging. With AquaBot, we planned to disseminate water quality information in real
                         time to enable conservation action and increase public awareness about stream health using
                         robotics.</p>
-                    <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-white text-xl my-1">
+                    <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Watch the
                             Video </button>
                     </a>
@@ -170,16 +170,16 @@
                                 width="350" height="349">
                         </picture>
                     </div>
-                    <p class="text-xl pb-4">OtoFind is a smartphone-based otoscope which leverages the power of the
-                        smartphone’s inbuilt camera and the power of offline machine learning to quickly and accurately
-                        diagnose Otitis Media. Our prototype was capable of achieving 84% accuracy when diagnosing ear
+                    <p class="pb-4">OtoFind is a smartphone-based otoscope which leverages the power of the smartphone’s
+                        inbuilt camera and the power of offline machine learning to quickly and accurately diagnose
+                        Otitis Media. Our prototype was capable of achieving 84% accuracy when diagnosing ear
                         infections. This is an inexpensive solution that provides an early, accurate diagnosis to
                         patients with Otitis Media and other ear infections.</p>
-                    <a href="https://github.com/omduggineni/otofind" class="inline-block text-white text-xl my-1">
+                    <a href="https://github.com/omduggineni/otofind" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Source Code
                         </button>
                     </a>
-                    <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-white text-xl my-1">
+                    <a href="https://www.youtube.com/watch?v=JNPxzVOdToU" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Watch the
                             Video </button>
                     </a>
@@ -196,17 +196,17 @@
                                 height="512">
                         </picture>
                     </div>
-                    <p class="desktop-sm:text-xl pb-4">MathQuiz! is available as a native Android app and cross-platform
-                        web app. The web app has had over 800,000 users.</p>
-                    <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-white text-xl my-1">
+                    <p class="pb-4">MathQuiz! is available as a native Android app and cross-platform web app. The web
+                        app has had over 800,000 users.</p>
+                    <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Source Code
                         </button>
                     </a>
-                    <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-white text-xl my-1">
+                    <a href="https://github.com/omduggineni/mathquiz-web" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Android
                         </button>
                     </a>
-                    <a href="https://math-quiz.github.io" class="inline-block text-white text-xl my-1">
+                    <a href="https://math-quiz.github.io" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> Web </button>
                     </a>
                 </div>

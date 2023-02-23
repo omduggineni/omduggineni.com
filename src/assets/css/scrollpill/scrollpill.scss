@@ -1,0 +1,187 @@
+@use "../utils/variables" as *;
+
+/*scrollpill*/
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes scrollpill-unshrink {
+    0% {
+        width: 10px;
+        height: 10px;
+        right: 10px;
+    }
+
+    100% {
+        width: 50px;
+        height: 50px;
+        right: 0px;
+    }
+}
+
+.scrollpill {
+    z-index: 100;
+    width: 2.5rem;
+    height: 2.5rem;
+    animation-iteration-count: 0;
+    text-align: center;
+    margin: 1rem;
+    position: fixed;
+    border-radius: 50%;
+    right: 0;
+    top: 0;
+    background-color: #0066ff;
+
+    &:hover {
+        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+        animation-iteration-count: 1 !important;
+        right: 0px;
+        font-size: 30px !important;
+        color: white !important;
+        box-shadow: #0066ff 0px 0px 10px;
+    }
+
+    &.scrollpill-at-top {
+        /*animate making smaller*/
+        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+        animation-iteration-count: 1 !important;
+        font-size: 30px;
+        color: white;
+
+        &:hover {
+            right: 0px !important;
+        }
+    }
+
+    &.scrollpill-at-top-first {
+        right: 0px !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 30px !important;
+        color: white !important;
+    }
+
+    &.scrollpill-at-middle {
+        animation: scrollpill-shrink 0.2s ease-in-out forwards;
+        animation-iteration-count: 1 !important;
+    }
+
+    &.scrollpill-open {
+        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+        animation-iteration-count: 1 !important;
+        right: 0px;
+        font-size: 30px !important;
+        color: white !important;
+        box-shadow: #0066ff 0px 0px 10px;
+    }
+}
+
+@keyframes scrollpill-shrink {
+    0% {
+        width: 50px;
+        height: 50px;
+        right: 0px;
+    }
+
+    100% {
+        width: 10px;
+        height: 10px;
+        right: 10px;
+    }
+}
+
+.scrollpill.scrollpill-at-bottom {
+    animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+    animation-iteration-count: 1 !important;
+    font-size: 30px !important;
+    color: white !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollpill-navbar {
+    font-size: 30px !important;
+    /*border: 0.15rem solid white;*/
+    position: absolute;
+    white-space: nowrap;
+    z-index: 100;
+    top: 0em;
+    right: 2em;
+    width: auto;
+    text-align: right;
+    padding: 1rem;
+    margin-top: 0;
+    color: white;
+    background-color: black;
+    transform: translateY(-1rem);
+
+    a {
+        white-space: nowrap;
+        display: inline;
+        margin: 0;
+        padding: 1rem;
+        text-decoration: none;
+        background-color: black;
+        border-left: 0px solid black;
+        border-right: 0px solid black;
+
+        &:hover {
+            /* color: #0066ff; */
+            animation: grow-navbar-text 0.2s ease-in-out forwards !important;
+            animation-iteration-count: 1 !important;
+        }
+
+        &:not(:hover) {
+            /* color: white; */
+            animation: shrink-navbar-text 0.2s ease-in-out forwards !important;
+            animation-iteration-count: 1 !important;
+        }
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .scrollpill-navbar {
+        white-space: normal;
+        background-color: black !important;
+
+        a {
+            // padding-top: 2.5rem;
+            // padding-bottom: 2.5rem;
+            padding: 0;
+            margin: 0;
+            z-index: inherit;
+            background-color: rgba(0, 0, 0, 0) !important;
+
+            span {
+                // padding-top: 2.5rem;
+                // padding-bottom: 2.5rem;
+                padding: 0;
+                margin: 0;
+                z-index: inherit;
+                background-color: rgba(0, 0, 0, 0) !important;
+            }
+        }
+    }
+}
+
+@keyframes grow-navbar-text {
+    0% {
+        font-weight: 300;
+    }
+
+    100% {
+        font-weight: 600;
+    }
+}
+
+@keyframes shrink-navbar-text {
+    0% {
+        font-weight: 600;
+    }
+
+    100% {
+        font-weight: 300;
+    }
+}

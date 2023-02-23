@@ -1,0 +1,6 @@
+@use "../utils/variables" as *;
+
+body {
+    background-color: $backgroundColor;
+    color: $textColor;
+}
