@@ -19,6 +19,21 @@ html {
     }
 }
 
+@keyframes scrollpill-wobble {
+    0% {
+        width: 10px;
+        height: 10px;
+        margin-top: 10px;
+        right: 10px;
+    }
+
+    100% {
+        width: 50px;
+        height: 50px;
+        right: 0px;
+    }
+}
+
 .scrollpill {
     z-index: 100;
     width: 2.5rem;
@@ -73,6 +88,11 @@ html {
         font-size: 30px !important;
         color: $textColor !important;
         box-shadow: #0066ff 0px 0px 10px;
+    }
+
+    &.scrollpill-loading {
+        animation: scrollpill-wobble 1s ease-in-out forwards;
+        animation-iteration-count: 1 !important;
     }
 }
 
@@ -134,6 +154,12 @@ html {
             /* color: white; */
             animation: shrink-navbar-text 0.2s ease-in-out forwards !important;
             animation-iteration-count: 1 !important;
+        }
+
+        @media (max-width: $screen-desktop-small) {
+            display: block;
+            padding-top: 0;
+            padding-bottom: 0;
         }
     }
 }

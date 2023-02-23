@@ -79,8 +79,8 @@ const executeTitleAnimation = async () => {
             setInterval(titleAnimationToggleTypingIndicatorHandler(TitleTypingElement), 1000);
 
             titleAnimationBringIntoView();
-            await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length - 1], 70, false);
             resolve();
+            await titleAnimationTypewriteTitle(TitleTextElements, TitleTypingElement, TitleAnimationTexts[TitleAnimationTexts.length - 1], 70, false);
 
             let elements_necessary_for_title_animation = document.body.querySelectorAll(".necessary-for-title-animation");
             elements_necessary_for_title_animation.forEach(function (element) {

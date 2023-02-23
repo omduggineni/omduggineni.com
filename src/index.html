@@ -4,13 +4,13 @@
 <head>
     <title>Om Duggineni</title>
     <style>
+        /* we can inline all CSS because this is a single page website */
         @import url("assets/css/utils/_default_rules.scss");
         @import url("assets/css/tailwind/tailwind_base.css");
         @import url("assets/css/tailwind/tailwind_utilities.css");
         @import url("assets/css/tailwind/tailwind_components.css");
         @import url("assets/css/scrollpill/scrollpill.scss");
         @import url("assets/css/homepage/title_animation.scss");
-        @import url("assets/css/particle_system.scss");
     </style>
     <!--<script src="https://cdn.tailwindcss.com/"></script>-->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -38,16 +38,10 @@
 </head>
 
 <body>
-    <svg class="particle-system overflow-hidden" id="particle_system">
-        <!--The particle system in the background spawns elements in this svg-->
-    </svg>
-    <div class="particle-system overflow-hidden" id="particle_system_text">
-        <!--The particle system in the background spawns elements in this div-->
-    </div>
     <div id="scrollpill" class="scrollpill scrollpill-at-top-first" style="position:'fixed'; top:0%">
         <span id="scrollpill-burger_element" class="fa"></span>
         <div class="scrollpill-navbar">
-            <span class="font-light">
+            <span>
                 <a href="#about-me" class="desktop-sm:inline mobile:block"><span class="text-blue font-medium">1.</span>
                     About</a>
                 <!-- <a href="#songs"><span class="text-blue font-medium">2.</span> Songs</a> -->
@@ -68,12 +62,12 @@
             <p class="mobile:text-xl desktop:text-3xl">bio/cs enthusiast, music person, tjhsst '23</p>
         </div>
     </div>
-    <div class="flex overflow-hidden w-screen h-auto title-drop-shadow text-xl" id="about-me">
+    <div class="flex overflow-hidden w-screen h-auto title-drop-shadow" id="about-me">
         <div
             class="flex desktop-sm:flex-row mobile:flex-col-reverse h-auto w-auto self-center desktop-sm:px-16 mobile:px-8 py-16">
             <div class="desktop-sm:w-[50%] mobile:w-[100%] h-auto py-16 desktop-sm:pr-10 block">
                 <h1
-                    class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">
+                    class="text-xl mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">
                     About</h1>
                 </br>
                 <p class="text-xl">Om Duggineni is a high school senior and thoroughly enjoys everything science and
@@ -271,17 +265,13 @@
     let scrollpill = import('./assets/js/scrollpill.js');
     let particle_system = import('./assets/js/particle_system.js');
 
+
     executeTitleAnimation().then(() => {
         scrollpill.then((ScrollPill) => {
             new ScrollPill.ScrollPill("scrollpill");
         });
         particle_system.then((ParticleSystem) => {
-            let particle_system_inst = new ParticleSystem.ParticleSystem(document.getElementById("particle_system"), document.getElementById("particle_system_text"), 200);
-            // setTimeout(()=>{
-            //     particle_system_inst.particles.forEach(p => {
-            //         p.sayUtterances(ParticleSystem.UtterancesLibrary.rick_utterances, 2000);
-            //     });
-            // }, 1000);
+            let particle_system_inst = new ParticleSystem.ParticleSystem(200);
         })
     });
 </script>

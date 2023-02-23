@@ -1,6 +1,4 @@
-const pix2browserstr = (pix) => {
-    return pix + 'px';
-}
+import * as particle_system_styles from '../css/particle_system/particle_system.module.scss';
 
 class ValueNoiseGenerator {
     constructor(max_value, max_steps) {
@@ -148,17 +146,21 @@ class Particle {
 Particle.SPEED = 1;
 Particle.WIDTH = 15;
 class ParticleSystem {
-    constructor(parentElement, parentTextElement, numParticles) {
+    constructor(numParticles) {
+
         this._ticknum = 0;
 
         this.width = window.innerWidth - Particle.WIDTH;
         this.height = document.body.scrollHeight - Particle.WIDTH;
 
-        parentElement.style.height = this.height + 'px';
-        parentTextElement.style.height = this.height + 'px';
-
-        this.element = parentElement;
-        this.text_element = parentTextElement;
+        this.element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        this.element.classList.add(particle_system_styles.particle_system);
+        this.element.style.height = this.height + 'px';
+        document.body.appendChild(this.element);
+        this.text_element = document.createElement('div');
+        this.text_element.classList.add(particle_system_styles.particle_system_text);
+        this.text_element.style.height = this.height + 'px';
+        document.body.appendChild(this.text_element);
 
         this.particles = [];
         let addParticle = () => {
@@ -184,18 +186,18 @@ class ParticleSystem {
         this._ticknum++;
         requestAnimationFrame(this.update_this);
     }
-    raycast(origin_x, origin_y, direction_x, direction_y) {
-        let closest_t = -1;
-        let closest = null;
-        for (let i = 0; i < this.particles.length; i++) {
-            let t = this.particles[i].raycast(origin_x, origin_y, direction_x, direction_y);
-            if (t > 0 && (closest_t < 0 || t < closest_t)) {
-                closest_t = t;
-                closest = this.particles[i];
-            }
-        }
-        return closest, closest_t;
-    }
+    // raycast(origin_x, origin_y, direction_x, direction_y) {
+    //     let closest_t = -1;
+    //     let closest = null;
+    //     for (let i = 0; i < this.particles.length; i++) {
+    //         let t = this.particles[i].raycast(origin_x, origin_y, direction_x, direction_y);
+    //         if (t > 0 && (closest_t < 0 || t < closest_t)) {
+    //             closest_t = t;
+    //             closest = this.particles[i];
+    //         }
+    //     }
+    //     return closest, closest_t;
+    // }
 }
 
 // const UtterancesLibrary = {
