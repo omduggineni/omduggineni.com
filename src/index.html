@@ -11,6 +11,7 @@
         @import url("assets/css/tailwind/tailwind_components.css");
         @import url("assets/css/scrollpill/scrollpill.scss");
         @import url("assets/css/homepage/title_animation.scss");
+        @import url("assets/css/homepage/sections_and_headers.scss");
         @import url("assets/css/homepage/about_section.scss");
         @import url("assets/css/homepage/project_section.scss");
     </style>
@@ -42,20 +43,16 @@
     <div id="scrollpill" class="scrollpill scrollpill-at-top-first">
         <span id="scrollpill-burger_element" class="fa"></span>
         <div class="scrollpill-navbar">
-            <span>
-                <a href="#about-me"><span class="text-blue font-medium">1.</span> About</a>
-                <!-- <a href="#songs"><span class="text-blue font-medium">2.</span> Songs</a> -->
-                <a href="#my-projects"><span class="text-blue font-medium">2.</span> Projects</a>
-                <!--<a href="#my-photos" class="desktop-sm:inline mobile:block"><span class="text-blue font-medium">3.</span> Photos</a>-->
-                <a href="#contact-me"><span class="text-blue font-medium">3.</span> Contact</a>
-            </span>
+            <a href="#about-me"><span>1.</span> About</a>
+            <!-- <a href="#songs"><span>2.</span> Songs</a> -->
+            <a href="#my-projects"><span>2.</span> Projects</a>
+            <a href="#contact-me"><span>3.</span> Contact</a>
         </div>
     </div>
     <div class="flex overflow-hidden w-screen h-screen necessary-for-title-animation">
         <div
             class="h-auto w-auto self-center mobile-sm:px-6 mobile:px-8 desktop:px-16 title-drop-shadow text-xl necessary-for-title-animation">
-            <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl necessary-for-title-animation"
-                id="page-title">Om Duggineni &#9608;</h1>
+            <h1 class="section-title necessary-for-title-animation" id="page-title">Om Duggineni &#9608;</h1>
             </br>
             <p class="mobile:text-xl desktop:text-3xl">bio/cs enthusiast, music person, tjhsst '23</p>
         </div>
@@ -64,9 +61,7 @@
         <div
             class="flex desktop-sm:flex-row mobile:flex-col-reverse h-auto w-auto self-center desktop-sm:px-16 mobile:px-8 py-16">
             <div class="desktop-sm:w-[50%] mobile:w-[100%] h-auto py-16 desktop-sm:pr-10 block">
-                <h1
-                    class="text-xl mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">
-                    About</h1>
+                <h1 class="section-title"> About</h1>
                 </br>
                 <p class="text-xl">Om Duggineni is a high school senior and thoroughly enjoys everything science and
                     computer science. He is passionate about the possibilities at the intersection of biology, computer
@@ -98,8 +93,7 @@
     </div> -->
     <div class="overflow-hidden w-screen h-auto" id="my-projects">
         <div class="align-center w-auto h-auto self-center px-16 py-8">
-            <h1 class="mobile-sm:text-2xl mobile:text-3xl mobile-large:text-4xl desktop-sm:text-7xl desktop:text-8xl">
-                Code/Projects</h1>
+            <h1 class="section-title"> Code/Projects</h1>
         </div>
         <div class="desktop-sm:px-16 mobile:px-6 pt-8 pb-16 flex flex-col w-[100%] h-auto">
             <div class="project-row">
