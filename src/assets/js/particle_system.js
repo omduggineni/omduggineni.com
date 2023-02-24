@@ -156,10 +156,12 @@ class ParticleSystem {
         this.element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         this.element.classList.add(particle_system_styles.particle_system);
         this.element.style.height = this.height + 'px';
+        this.element.style.zIndex = -10000;
         document.body.appendChild(this.element);
         this.text_element = document.createElement('div');
         this.text_element.classList.add(particle_system_styles.particle_system_text);
         this.text_element.style.height = this.height + 'px';
+        this.text_element.style.zIndex = -10000;
         document.body.appendChild(this.text_element);
 
         this.particles = [];
