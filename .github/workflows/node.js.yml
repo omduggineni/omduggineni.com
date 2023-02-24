@@ -45,5 +45,6 @@ jobs:
     - run: echo "omduggineni.com" > CNAME
     - run: git add -v .
     - run: git config --global user.name "GitHub Actions"
+    - run: git config --global user.email "actions-runner-placeholder-email@github.com"
     - run: git commit -m "GitHub Pages build $(date +"%Y-%m-%d")" --allow-empty
     - run: git push origin gh-pages
