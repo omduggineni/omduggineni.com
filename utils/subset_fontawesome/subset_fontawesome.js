@@ -3,6 +3,6 @@ const fontawesomeSubset = require("fontawesome-subset").fontawesomeSubset;
 
 // Create or append a task to be ran with your configuration
 fontawesomeSubset({
-    "solid":["arrow-up", "bars", "envelope"],
+    "solid":["arrow-up", "bars", "envelope", "rss"],
     "brands":["facebook-square", "linkedin"],
 }, "src/include/fontawesome/");
