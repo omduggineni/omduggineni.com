@@ -167,7 +167,7 @@ html {
 @media screen and (max-width: 730px) {
     .scrollpill-navbar {
         white-space: normal;
-        background-color: black !important;
+        background-color: $backgroundColor;
 
         a {
             // padding-top: 2.5rem;
