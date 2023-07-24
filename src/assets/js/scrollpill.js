@@ -1,8 +1,36 @@
 class ScrollPillNavbar {
-    constructor(element) {
+    constructor(element, scrollpill) {
+        this.scrollpill = scrollpill;
         this.element = element;
         element.style.display = 'block';
         this.is_open = true;
+        this.sections = [...this.element.querySelectorAll('a')].map((element) => {
+            return [element, document.getElementById(element.getAttribute('href').substring(1))];
+        });
+        console.log(this.sections);
+        this.activeSection = null;
+    }
+    updateActiveSection() {
+        let newActiveSection;
+        if (this.scrollpill.state == this.scrollpill.state_machine.AT_BOTTOM) {
+            newActiveSection = this.sections[this.sections.length - 1];
+        } else {
+            newActiveSection = this.sections.findLast(([section_element, section]) => {
+                console.log(section.getBoundingClientRect().top, window.innerHeight / 2, section.getBoundingClientRect().top < window.innerHeight / 2);
+                return section.getBoundingClientRect().top < window.innerHeight / 2;
+            });
+        }
+        if (newActiveSection != null) {
+            if (this.activeSection != null) {
+                this.activeSection[0].classList.remove("scrollpill-navbar-active-section");
+            }
+            newActiveSection[0].classList.add("scrollpill-navbar-active-section");
+        } else {
+            if (this.activeSection != null) {
+                this.activeSection[0].classList.remove("scrollpill-navbar-active-section");
+            }
+        }
+        this.activeSection = newActiveSection;
     }
     show() {
         if(this.is_open) return;
@@ -43,7 +71,9 @@ class ScrollPillElement {
     constructor(element) {
         this.element = element;
         this.element_height = element.getBoundingClientRect().height;
-        this.navbar = new ScrollPillNavbar(element.querySelector('.scrollpill-navbar'));
+        this.navbar = new ScrollPillNavbar(element.querySelector('.scrollpill-navbar'), this);
+        // this.navbar.show();
+        // this.navbar.disable();
         element.appendChild(this.navbar.element);
         element.classList.add('scrollpill');
         element.classList.add('scrollpill-at-top-first');
@@ -56,6 +86,7 @@ class ScrollPillElement {
         window.addEventListener('scroll', this.onScrollUpdate.bind(this));
         window.addEventListener('resize', this.onScrollUpdate.bind(this));
         this.element.addEventListener('click', this.onClick.bind(this));
+        window.addEventListener('scroll', this.navbar.updateActiveSection.bind(this.navbar));
     }
     updateState(state) {
         this.element.classList.remove(this.state);
@@ -102,8 +133,9 @@ class ScrollPillElement {
         });
         this.onScrollUpdate();
     }
-    onClick() {
+    onClick(event) {
         if (this.state == this.state_machine.AT_BOTTOM) {
+            if(event.target.classList.contains('.scrollpill-navbar')) return;
             this.navbar.disable();
             this.onPercentageUpdate(0, { scrollBehavior: 'smooth' });
             let scrollHandler = () => {

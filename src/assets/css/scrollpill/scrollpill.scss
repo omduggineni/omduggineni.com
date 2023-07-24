@@ -208,11 +208,17 @@ $fontawesome-icon-names: (
 
         &:hover {
             /* color: #0066ff; */
-            animation: grow-navbar-text 0.2s ease-in-out forwards !important;
+            animation: grow-underline-navbar-text 0.2s ease-in-out forwards !important;
             animation-iteration-count: 1 !important;
         }
 
-        &:not(:hover) {
+        &.scrollpill-navbar-active-section {
+            /* color: #0066ff; */
+            animation: grow-shade-navbar-text 0.2s ease-in-out forwards !important;
+            animation-iteration-count: 1 !important;
+        }
+
+        &:not(:hover):not(.scrollpill-navbar-active-section) {
             /* color: white; */
             animation: shrink-navbar-text 0.2s ease-in-out forwards !important;
             animation-iteration-count: 1 !important;
@@ -246,13 +252,43 @@ $fontawesome-icon-names: (
     }
 }
 
-@keyframes grow-navbar-text {
+@keyframes grow-underline-navbar-text {
     0% {
         font-weight: 300;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(120deg, #0066ff 0%, #0099ff 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 0;
+        background-position: bottom;
     }
 
     100% {
         font-weight: 600;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(120deg, #0066ff 0%, #0099ff 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 0.2em;
+        background-position: bottom;
+    }
+}
+
+@keyframes grow-shade-navbar-text {
+    0% {
+        font-weight: 300;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(120deg, #0066ff 0%, #0099ff 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 0;
+        background-position: bottom;
+    }
+
+    100% {
+        font-weight: 600;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: linear-gradient(120deg, #0066ff 0%, #0099ff 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: bottom;
     }
 }
 
