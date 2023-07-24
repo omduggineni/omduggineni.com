@@ -139,9 +139,6 @@ class Particle {
         utterances.add_particle(this);
         utterances.speakIn(delay_start);
     }
-    raycast(origin_x, origin_y, direction_x, direction_y) {
-        //TODO: implement raycast
-    }
 }
 Particle.SPEED = 1;
 Particle.WIDTH = 15;
