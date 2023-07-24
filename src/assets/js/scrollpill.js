@@ -119,6 +119,8 @@ class ScrollPillElement {
                 this.navbar.enable();
                 this.navbar.show();
             }, 2000);
+        } else if (this.state == this.state_machine.AT_TOP || this.state == this.state_machine.AT_TOP_FIRST) {
+            return;
         }
 
         if (this.navbar.is_open) {
