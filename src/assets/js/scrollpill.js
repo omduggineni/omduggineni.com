@@ -21,11 +21,6 @@ class ScrollPillNavbar {
             onClickScrollTimeout = setTimeout(() => {
                 window.removeEventListener('scroll', onScrollDueToClick);
                 this.enable();
-                //console.log("re-enabling navbar");
-                //console.log(this);
-                if (this.scrollpill.state == this.scrollpill.state_machine.AT_BOTTOM) {
-                    this.hide();
-                }
             }, 500);
         };
         this.sections.forEach(([section_element, section]) => {
@@ -38,9 +33,6 @@ class ScrollPillNavbar {
                 onClickScrollTimeout = setTimeout(() => {
                     window.removeEventListener('scroll', onScrollDueToClick);
                     this.enable();
-                    if (this.scrollpill.state == this.scrollpill.state_machine.AT_BOTTOM) {
-                        this.hide();
-                    }
                 }, 500);
             });
         });
