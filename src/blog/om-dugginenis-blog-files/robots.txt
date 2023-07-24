@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://omduggineni.com/blog/sitemap.xml

@@ -1,8 +1,73 @@
 @use "../utils/variables" as *;
 @use "../utils/fonts" as *;
+@use "sass:color";
 
 body {
     background-color: $backgroundColor;
     color: $textColor;
     font-family: $defaultFont;
+}
+
+@keyframes emphasize-box-shadow {
+    0% {
+        box-shadow: 0px 0px 15px #0066ff96;
+    }
+
+    100% {
+        box-shadow: 0px 0px 20px #0066ffff;
+    }
+}
+
+@mixin box_shadow_change_hover {
+    box-shadow: 0px 0px 15px #0066ff96;
+
+    &:hover {
+        animation: emphasize-box-shadow 0.1s ease-in-out forwards;
+    }
+}
+
+.shadow_change_hover {
+    @include box_shadow_change_hover;
+}
+
+a.link-style {
+    text-decoration: underline !important;
+    text-decoration-color: $textColor;
+    /* thickness */
+    background-color: color.adjust($color: $textColor, $alpha: -1);
+    @keyframes linkOnHover{
+        0% {
+            background-color: color.adjust($color: $textColor, $alpha: -1);
+            border-radius: 0 0;
+        }
+    
+        100% {
+            text-decoration-color: $linkColor;
+            background-color: color.adjust($color: $textColor, $alpha: -0.7);
+            border-radius: 3px 3px;
+        }
+    }
+    &:hover {
+        animation: linkOnHover 0.1s ease-in-out forwards;
+    }
+}
+
+.section-title {
+    @media (min-width: $screen-desktop-small) {
+        font-size: 3.5rem;
+    }
+
+    @media (max-width: $screen-desktop-small) {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: $screen-mobile-large) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: $screen-mobile) {
+        font-size: 1.5rem;
+    }
+
+    font-size: 1rem;
 }

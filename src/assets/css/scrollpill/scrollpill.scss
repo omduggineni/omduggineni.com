@@ -5,6 +5,11 @@ html {
     scroll-behavior: smooth;
 }
 
+$fontawesome-icon-names: (
+    "bars": "\f0c9",
+    "arrow-up": "\f062",
+);
+
 @keyframes scrollpill-unshrink {
     0% {
         width: 10px;
@@ -16,6 +21,41 @@ html {
         width: 50px;
         height: 50px;
         right: 0px;
+    }
+}
+@keyframes scrollpill-shrink {
+    0% {
+        width: 50px;
+        height: 50px;
+        right: 0px;
+    }
+
+    100% {
+        width: 10px;
+        height: 10px;
+        right: 10px;
+    }
+}
+@keyframes scrollpill-before-unshrink-bars {
+    0%{
+        content: '';
+    }
+    99%{
+        content: '';
+    }
+    100%{
+        content: "\f0c9";
+    }
+}
+@keyframes scrollpill-before-unshrink-arrow {
+    0%{
+        content: '';
+    }
+    99%{
+        content: '';
+    }
+    100%{
+        content: "\f062";
     }
 }
 
@@ -38,22 +78,35 @@ html {
     z-index: 100;
     width: 2.5rem;
     height: 2.5rem;
-    animation-iteration-count: 0;
+    animation-iteration-count: 0; 
     text-align: center;
     margin: 1rem;
     position: fixed;
-    border-radius: 50%;
+    border-radius: 5px;
     right: 0;
     top: 0;
     background-color: #0066ff;
+    pointer-events: bounding-box;
 
-    &:hover {
+    &::before {
+        content: '';
+    }
+
+    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):hover, 
+    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging{
         animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
         animation-iteration-count: 1 !important;
         right: 0px;
         font-size: 30px !important;
         color: $textColor !important;
         box-shadow: #0066ff 0px 0px 10px;
+
+        &::before {
+            font-family: 'Font Awesome 6 Free';
+            display: inline-block;
+            font-weight: 900;
+            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
+        }
     }
 
     &.scrollpill-at-top {
@@ -63,8 +116,11 @@ html {
         font-size: 30px;
         color: $textColor !important;
 
-        &:hover {
-            right: 0px !important;
+        &::before {
+            font-family: 'Font Awesome 6 Free';
+            display: inline-block;
+            font-weight: 900;
+            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
         }
     }
 
@@ -74,6 +130,13 @@ html {
         height: 50px !important;
         font-size: 30px !important;
         color: $textColor !important;
+
+        &::before {
+            font-family: 'Font Awesome 6 Free';
+            display: inline-block;
+            font-weight: 900;
+            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
+        }
     }
 
     &.scrollpill-at-middle {
@@ -83,6 +146,14 @@ html {
 
     &.scrollpill-open {
         animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+
+        &::before {
+            font-family: 'Font Awesome 6 Free';
+            display: inline-block;
+            font-weight: 900;
+            content: "\f0c9";
+            animation-name: none !important;
+        }
         animation-iteration-count: 1 !important;
         right: 0px;
         font-size: 30px !important;
@@ -90,31 +161,18 @@ html {
         box-shadow: #0066ff 0px 0px 10px;
     }
 
-    &.scrollpill-loading {
-        animation: scrollpill-wobble 1s ease-in-out forwards;
+    &.scrollpill-at-bottom {
+        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
         animation-iteration-count: 1 !important;
+        font-size: 30px !important;
+        color: $textColor !important;
+        &::before {
+            font-family: 'Font Awesome 6 Free';
+            display: inline-block;
+            font-weight: 900;
+            animation: scrollpill-before-unshrink-arrow 0.2s ease-in-out forwards;
+        }
     }
-}
-
-@keyframes scrollpill-shrink {
-    0% {
-        width: 50px;
-        height: 50px;
-        right: 0px;
-    }
-
-    100% {
-        width: 10px;
-        height: 10px;
-        right: 10px;
-    }
-}
-
-.scrollpill.scrollpill-at-bottom {
-    animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
-    animation-iteration-count: 1 !important;
-    font-size: 30px !important;
-    color: $textColor !important;
 }
 
 ::-webkit-scrollbar {
@@ -135,7 +193,11 @@ html {
     margin-top: 0;
     color: $textColor;
     background-color: $backgroundColor;
-    transform: translateY(-1rem);
+    user-select: none;
+    transform: translateY(-13px);
+
+    border-radius: 5px;
+    box-shadow: $backgroundColor 0px 0px 10px;
 
     a {
         white-space: nowrap;
@@ -172,7 +234,6 @@ html {
 @media screen and (max-width: 730px) {
     .scrollpill-navbar {
         white-space: normal;
-        background-color: $backgroundColor;
 
         a {
             // padding-top: 2.5rem;
