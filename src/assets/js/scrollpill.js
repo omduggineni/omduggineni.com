@@ -1,14 +1,49 @@
 class ScrollPillNavbar {
     constructor(element, scrollpill) {
         this.scrollpill = scrollpill;
+        scrollpill.element.classList.add('scrollpill-open');
         this.element = element;
         element.style.display = 'block';
         this.is_open = true;
         this.sections = [...this.element.querySelectorAll('a')].map((element) => {
             return [element, document.getElementById(element.getAttribute('href').substring(1))];
         });
-        console.log(this.sections);
+        //console.log(this.sections);
         this.activeSection = null;
+        this.registerEvents();
+        this.disabled = false;
+    }
+    registerEvents() {
+        let onClickScrollTimeout = null;
+        let onScrollDueToClick = () => {
+            //console.log('scroll due to click');
+            clearTimeout(onClickScrollTimeout);
+            onClickScrollTimeout = setTimeout(() => {
+                window.removeEventListener('scroll', onScrollDueToClick);
+                this.enable();
+                //console.log("re-enabling navbar");
+                //console.log(this);
+                if (this.scrollpill.state == this.scrollpill.state_machine.AT_BOTTOM) {
+                    this.hide();
+                }
+            }, 500);
+        };
+        this.sections.forEach(([section_element, section]) => {
+            section_element.addEventListener('click', (event) => {
+                //console.log('click');
+                this.disable();
+                this.scrollpill.closeOnScroll = false;
+                window.addEventListener('scroll', onScrollDueToClick);
+                clearTimeout(onClickScrollTimeout);
+                onClickScrollTimeout = setTimeout(() => {
+                    window.removeEventListener('scroll', onScrollDueToClick);
+                    this.enable();
+                    if (this.scrollpill.state == this.scrollpill.state_machine.AT_BOTTOM) {
+                        this.hide();
+                    }
+                }, 500);
+            });
+        });
     }
     updateActiveSection() {
         let newActiveSection;
@@ -16,7 +51,7 @@ class ScrollPillNavbar {
             newActiveSection = this.sections[this.sections.length - 1];
         } else {
             newActiveSection = this.sections.findLast(([section_element, section]) => {
-                console.log(section.getBoundingClientRect().top, window.innerHeight / 2, section.getBoundingClientRect().top < window.innerHeight / 2);
+                //console.log(section.getBoundingClientRect().top, window.innerHeight / 2, section.getBoundingClientRect().top < window.innerHeight / 2);
                 return section.getBoundingClientRect().top < window.innerHeight / 2;
             });
         }
@@ -35,11 +70,19 @@ class ScrollPillNavbar {
     show() {
         if(this.is_open) return;
         this.element.style.display = 'block';
+        this.scrollpill.element.classList.add('scrollpill-open');
         this.is_open = true;
     }
     hide() {
         if(!this.is_open) return;
         this.element.style.display = 'none';
+        this.scrollpill.element.classList.remove('scrollpill-open');
+        this.is_open = false;
+    }
+    forceHide() {
+        if (!this.is_open) return;
+        this.element.style.display = 'none';
+        this.scrollpill.element.classList.remove('scrollpill-open');
         this.is_open = false;
     }
     toggle() {
@@ -47,12 +90,15 @@ class ScrollPillNavbar {
         else this.show();
     }
     disable() {
+        if(this.disabled) return;
         this.oldShow = this.show;
         this.oldHide = this.hide;
         this.show = () => { };
         this.hide = () => { };
+        this.disabled = true;
     }
     enable() {
+        this.disabled = false;
         this.show = this.oldShow;
         this.hide = this.oldHide;
     }
@@ -79,7 +125,8 @@ class ScrollPillElement {
         element.classList.add('scrollpill-at-top-first');
         this.state = this.state_machine.AT_TOP_FIRST;
         this.scrollPercentage = 0;
-
+        //this.closeOnScroll = true;
+ 
         this.registerEventHandlers();
     }
     registerEventHandlers() {
@@ -108,10 +155,6 @@ class ScrollPillElement {
         const windowHeight = window.innerHeight;
 
         const scrollPercentage = (scrollY / (scrollHeight - windowHeight)) * 100;
-        
-        if (this.element.classList.contains('scrollpill-open')) {
-            this.element.classList.remove('scrollpill-open');
-        }
 
         this.scrollPercentage = scrollPercentage;
         this.element.style.top = this.percentage2screenpx(scrollPercentage);
@@ -120,7 +163,7 @@ class ScrollPillElement {
             this.navbar.show();
         } else if (scrollPercentage >= 99.75) {
             this.updateState(this.state_machine.AT_BOTTOM);
-            this.navbar.hide();
+            this.navbar.forceHide();
         } else {
             this.updateState(this.state_machine.AT_MIDDLE);
             this.navbar.hide();
@@ -156,10 +199,8 @@ class ScrollPillElement {
         }
 
         if (this.navbar.is_open) {
-            this.element.classList.remove("scrollpill-open");
             this.navbar.hide();
         } else {
-            this.element.classList.add("scrollpill-open");
             this.navbar.show();
         }
     }

@@ -144,7 +144,7 @@ $fontawesome-icon-names: (
         animation-iteration-count: 1 !important;
     }
 
-    &.scrollpill-open {
+    &:not(.scrollpill-at-bottom).scrollpill-open {
         animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
 
         &::before {
