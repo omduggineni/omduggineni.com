@@ -193,8 +193,17 @@
             <div class="project-row">
                 <div class="project-card">
                     <h2>pholder</h2>
-                    <img src="https://media.giphy.com/media/3o7btLQZQQZQQQQQQQ/giphy.gif" alt="test" class="w-full h-auto" loading="lazy">
-                    <p class="text-xl py-2">Pholder is an AI-based photo organizer app that can detect objects in pictures and allows the user to search through them intelligently. Built as part of the hackathon HackTJ, it utilizes on-device processing to maintain users' privacy.</p>
+                    <div class="px-10 py-4 pb-8">
+                        <picture width="512" height="512">
+                            <source srcset="./assets/images/projects/pholder.png?as=avif" type="image/avif">
+                            <source srcset="./assets/images/projects/pholder.png?as=webp" type="image/webp">
+                            <source srcset="./assets/images/projects/pholder.png?as=jpeg" type="image/jpeg">
+                            <source srcset="./assets/images/projects/pholder.png" type="image/png">
+                            <img src="./assets/images/projects/pholder.png" alt="A screenshot of Pholder! in use." width="512"
+                                height="512" loading="lazy">
+                        </picture>
+                    </div>
+                    <p class="pb-4">Pholder is an AI-based photo organizer app that can detect objects in pictures and allows the user to search through them intelligently. Built as part of the hackathon HackTJ, it utilizes on-device processing to maintain users' privacy.</p>
                     <a href="https://devpost.com/software/pholder" class="inline-block text-xl my-1">
                         <button class="border-2 border-solid border-white px-4 py-2 shadow-change-hover"> View on Devpost </button>
                     </a>
