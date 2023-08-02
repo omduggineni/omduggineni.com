@@ -244,7 +244,8 @@ $fontawesome-icon-names: (
         a {
             // padding-top: 2.5rem;
             // padding-bottom: 2.5rem;
-            padding: 0;
+            padding: 0.5rem;
+            border-radius: 0.2rem;
             margin: 0;
             z-index: inherit;
             background-color: rgba(0, 0, 0, 0) !important;
@@ -289,6 +290,7 @@ $fontawesome-icon-names: (
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-position: bottom;
+        border-radius: 0.25rem;
     }
 }
 
