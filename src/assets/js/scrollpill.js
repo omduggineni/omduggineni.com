@@ -167,19 +167,10 @@ class ScrollPillElement {
             if(event.target.classList.contains('.scrollpill-navbar')) return;
             this.navbar.disable();
             this.onPercentageUpdate(0, { scrollBehavior: 'smooth' });
-            let scrollHandler = () => {
-                if (this.scrollPercentage == 0) {
-                    window.removeEventListener('scroll', scrollHandler);
-                    this.navbar.enable();
-                    this.navbar.show();
-                }
-            };
-            window.addEventListener('scroll', scrollHandler);
-            setTimeout(() => {
-                window.removeEventListener('scroll', scrollHandler);
+            window.addEventListener('scrollend', () => {
                 this.navbar.enable();
                 this.navbar.show();
-            }, 2000);
+            });
         }
 
         if (this.navbar.is_open) {
