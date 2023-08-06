@@ -125,7 +125,7 @@ class ScrollPillElement {
     percentage2screenpx(percentage) {
         //console.log(percentage);
         let remaining_screen_space = window.innerHeight - this.element_height * 1.775;
-        console.log(remaining_screen_space, window.innerHeight, this.element_height);
+        //console.log(remaining_screen_space, window.innerHeight, this.element_height);
         
         return ((percentage/100) * remaining_screen_space) + 'px';
     }
