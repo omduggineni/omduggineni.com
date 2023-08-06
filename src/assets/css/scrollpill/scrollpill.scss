@@ -91,7 +91,7 @@ $fontawesome-icon-names: (
     }
 }
 
-@mixin make_scrollpill_big($icon_type: "bars") {
+@mixin make_scrollpill_big($icon: "bars") {
     animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
     animation-iteration-count: 1 !important;
     right: 0px;
@@ -100,12 +100,9 @@ $fontawesome-icon-names: (
     box-shadow: #0066ff 0px 0px 10px;
 
     &::before {
-        font-family: 'Font Awesome 6 Free';
-        display: inline-block;
-        font-weight: 900;
-        @if $icon_type == "bars" {
+        @if $icon == "bars" {
             animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
-        } @else if $icon_type == "arrow-up" {
+        } @else if $icon == "arrow-up" {
             animation: scrollpill-before-unshrink-arrow 0.2s ease-in-out forwards;
         } @else {
             @error "Invalid icon type for scrollpill";
@@ -133,6 +130,9 @@ $fontawesome-icon-names: (
     pointer-events: bounding-box;
 
     &::before {
+        font-family: 'Font Awesome 6 Free';
+        display: inline-block;
+        font-weight: 900;
         content: '';
     }
 
@@ -179,7 +179,7 @@ $fontawesome-icon-names: (
     }
 
     &.scrollpill-at-top-first, &.scrollpill-at-top {
-        @include make_scrollpill_big;
+        @include make_scrollpill_big($icon: "bars");
     }
 
     &.scrollpill-at-middle {
@@ -187,11 +187,11 @@ $fontawesome-icon-names: (
     }
 
     &:not(.scrollpill-at-bottom):not(.scrollpill-at-top).scrollpill-open {
-        @include make_scrollpill_big;
+        @include make_scrollpill_big($icon: "bars");
     }
 
     &.scrollpill-at-bottom {
-        @include make_scrollpill_big("arrow-up");
+        @include make_scrollpill_big($icon: "arrow-up");
     }
 }
 
