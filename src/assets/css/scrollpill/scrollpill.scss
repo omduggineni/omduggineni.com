@@ -1,5 +1,9 @@
 @use "../utils/variables" as *;
 
+body {
+    overflow: none;
+}
+
 /*scrollpill*/
 html {
     scroll-behavior: smooth;
@@ -19,6 +23,19 @@ $fontawesome-icon-names: (
 
     100% {
         width: 50px;
+        height: 50px;
+        right: 0px;
+    }
+}
+@keyframes scrollpill-unshrink-tall {
+    0% {
+        width: 10px;
+        height: 10px;
+        right: 10px;
+    }
+
+    100% {
+        width: 10px;
         height: 50px;
         right: 0px;
     }
@@ -74,6 +91,33 @@ $fontawesome-icon-names: (
     }
 }
 
+@mixin make_scrollpill_big($icon_type: "bars") {
+    animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
+    animation-iteration-count: 1 !important;
+    right: 0px;
+    font-size: 30px !important;
+    color: $textColor !important;
+    box-shadow: #0066ff 0px 0px 10px;
+
+    &::before {
+        font-family: 'Font Awesome 6 Free';
+        display: inline-block;
+        font-weight: 900;
+        @if $icon_type == "bars" {
+            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
+        } @else if $icon_type == "arrow-up" {
+            animation: scrollpill-before-unshrink-arrow 0.2s ease-in-out forwards;
+        } @else {
+            @error "Invalid icon type for scrollpill";
+        }
+    }
+}
+
+@mixin make_scrollpill_small {
+    animation: scrollpill-shrink 0.2s ease-in-out forwards;
+    animation-iteration-count: 1 !important;
+}
+
 .scrollpill {
     z-index: 100;
     width: 2.5rem;
@@ -92,86 +136,62 @@ $fontawesome-icon-names: (
         content: '';
     }
 
-    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):hover, 
-    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging{
-        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
-        animation-iteration-count: 1 !important;
-        right: 0px;
-        font-size: 30px !important;
-        color: $textColor !important;
-        box-shadow: #0066ff 0px 0px 10px;
-
-        &::before {
-            font-family: 'Font Awesome 6 Free';
-            display: inline-block;
-            font-weight: 900;
-            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
-        }
+    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):hover
+    /*&:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging*/{
+        @include make_scrollpill_big;
     }
 
-    &.scrollpill-at-top {
-        /*animate making smaller*/
-        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
-        animation-iteration-count: 1 !important;
-        font-size: 30px;
-        color: $textColor !important;
+    // &.scrollpill-at-top {
+    //     /*animate making smaller*/
+    //     animation: scrollpill-unshrink-tall 0.2s ease-in-out forwards !important;
+    //     animation-iteration-count: 1 !important;
+    //     font-size: 30px;
+    //     color: $textColor !important;
 
-        &::before {
-            font-family: 'Font Awesome 6 Free';
-            display: inline-block;
-            font-weight: 900;
-            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
-        }
-    }
-
+    //     &::before {
+    //         content: "";
+    //     }
+        
+    //     .scrollpill-navbar {
+    //         transform: translateX(25pt) translateY(-13px);
+    //     }
+    // }
+    
     &.scrollpill-at-top-first {
-        right: 0px !important;
+        &::before{
+            content: "\f062";
+        }
         width: 50px !important;
         height: 50px !important;
-        font-size: 30px !important;
-        color: $textColor !important;
+        right: 0px !important;
+    }
 
-        &::before {
-            font-family: 'Font Awesome 6 Free';
-            display: inline-block;
-            font-weight: 900;
-            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
+    &.scrollpill-open {
+        .scrollpill-navbar {
+            display: block !important;
         }
+    }
+    
+    &:not(.scrollpill-open) {
+        .scrollpill-navbar {
+            display: none;
+        }
+    }
+
+    &.scrollpill-at-top-first, &.scrollpill-at-top {
+        @include make_scrollpill_big;
     }
 
     &.scrollpill-at-middle {
-        animation: scrollpill-shrink 0.2s ease-in-out forwards;
-        animation-iteration-count: 1 !important;
+        @include make_scrollpill_small;
     }
 
-    &:not(.scrollpill-at-bottom).scrollpill-open {
-        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
-
-        &::before {
-            font-family: 'Font Awesome 6 Free';
-            display: inline-block;
-            font-weight: 900;
-            content: "\f0c9";
-            animation-name: none !important;
-        }
-        animation-iteration-count: 1 !important;
-        right: 0px;
-        font-size: 30px !important;
-        color: $textColor !important;
-        box-shadow: #0066ff 0px 0px 10px;
+    &:not(.scrollpill-at-bottom):not(.scrollpill-at-top).scrollpill-open {
+        @include make_scrollpill_big;
     }
 
     &.scrollpill-at-bottom {
-        animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
-        animation-iteration-count: 1 !important;
-        font-size: 30px !important;
-        color: $textColor !important;
-        &::before {
-            font-family: 'Font Awesome 6 Free';
-            display: inline-block;
-            font-weight: 900;
-            animation: scrollpill-before-unshrink-arrow 0.2s ease-in-out forwards;
-        }
+        @include make_scrollpill_big("arrow-up");
     }
 }
 

@@ -3,7 +3,6 @@ class ScrollPillNavbar {
         this.scrollpill = scrollpill;
         scrollpill.element.classList.add('scrollpill-open');
         this.element = element;
-        element.style.display = 'block';
         this.is_open = true;
         this.sections = [...this.element.querySelectorAll('a')].map((element) => {
             return [element, document.getElementById(element.getAttribute('href').substring(1))];
@@ -14,26 +13,15 @@ class ScrollPillNavbar {
         this.disabled = false;
     }
     registerEvents() {
-        let onClickScrollTimeout = null;
-        let onScrollDueToClick = () => {
-            //console.log('scroll due to click');
-            clearTimeout(onClickScrollTimeout);
-            onClickScrollTimeout = setTimeout(() => {
-                window.removeEventListener('scroll', onScrollDueToClick);
-                this.enable();
-            }, 500);
-        };
         this.sections.forEach(([section_element, section]) => {
             section_element.addEventListener('click', (event) => {
                 //console.log('click');
                 this.disable();
-                this.scrollpill.closeOnScroll = false;
-                window.addEventListener('scroll', onScrollDueToClick);
-                clearTimeout(onClickScrollTimeout);
-                onClickScrollTimeout = setTimeout(() => {
-                    window.removeEventListener('scroll', onScrollDueToClick);
+                //this.scrollpill.closeOnScroll = false;
+                window.addEventListener('scrollend', () => {
                     this.enable();
-                }, 500);
+                    //this.scrollpill.closeOnScroll = true;
+                }, {once: true});
             });
         });
     }
@@ -61,19 +49,19 @@ class ScrollPillNavbar {
     }
     show() {
         if(this.is_open) return;
-        this.element.style.display = 'block';
+        //this.element.style.display = 'block';
         this.scrollpill.element.classList.add('scrollpill-open');
         this.is_open = true;
     }
     hide() {
         if(!this.is_open) return;
-        this.element.style.display = 'none';
+        //this.element.style.display = 'none';
         this.scrollpill.element.classList.remove('scrollpill-open');
         this.is_open = false;
     }
     forceHide() {
         if (!this.is_open) return;
-        this.element.style.display = 'none';
+        //this.element.style.display = 'none';
         this.scrollpill.element.classList.remove('scrollpill-open');
         this.is_open = false;
     }
@@ -120,10 +108,12 @@ class ScrollPillElement {
         //this.closeOnScroll = true;
  
         this.registerEventHandlers();
+        this.navbar.show();
     }
     registerEventHandlers() {
         window.addEventListener('scroll', this.onScrollUpdate.bind(this));
         window.addEventListener('resize', this.onScrollUpdate.bind(this));
+        window.addEventListener('orientationchange', this.onScrollUpdate.bind(this));
         this.element.addEventListener('click', this.onClick.bind(this));
         window.addEventListener('scroll', this.navbar.updateActiveSection.bind(this.navbar));
     }
@@ -135,6 +125,7 @@ class ScrollPillElement {
     percentage2screenpx(percentage) {
         //console.log(percentage);
         let remaining_screen_space = window.innerHeight - this.element_height * 1.775;
+        console.log(remaining_screen_space, window.innerHeight, this.element_height);
         
         return ((percentage/100) * remaining_screen_space) + 'px';
     }
@@ -146,7 +137,10 @@ class ScrollPillElement {
         const scrollHeight = document.body.scrollHeight;
         const windowHeight = window.innerHeight;
 
+
         const scrollPercentage = (scrollY / (scrollHeight - windowHeight)) * 100;
+        //console.log(scrollY, scrollHeight, windowHeight, scrollPercentage);
+
 
         this.scrollPercentage = scrollPercentage;
         this.element.style.top = this.percentage2screenpx(scrollPercentage);
@@ -186,8 +180,6 @@ class ScrollPillElement {
                 this.navbar.enable();
                 this.navbar.show();
             }, 2000);
-        } else if (this.state == this.state_machine.AT_TOP || this.state == this.state_machine.AT_TOP_FIRST) {
-            return;
         }
 
         if (this.navbar.is_open) {

@@ -3,11 +3,12 @@
 /*particle system*/
 .particle_system {
     z-index: -2;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     width: 100%;
 }
 
@@ -22,12 +23,12 @@
 }
 
 .particle_system_text {
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    bottom: 0;
     font-size: 1rem;
     font-weight: bold;
     color: $textColor;

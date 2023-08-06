@@ -57,7 +57,7 @@ const executeTitleAnimation = async () => {
     titleAnimationHideEverything();
     let promise = new Promise((resolve) => {
         window.addEventListener('DOMContentLoaded', async () => {
-            let TitleElement = document.getElementById("page-title");
+            let TitleElement = document.querySelector("#page-title");
             TitleElement.innerText = "";
 
             let TitleTextElements = [];

@@ -115,6 +115,7 @@ class Particle {
         this.element.setAttribute("opacity", Math.min(2 / (this._z), 1));
         this.element.setAttribute("fill", "#ffff00");
         parentElement.appendChild(this.element);
+        this.wasDisplayed = false;
     }
     update() {
         //particle calculation logic
@@ -129,10 +130,20 @@ class Particle {
         //if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.text_element, this._x, this._y, 1000);
 
         //actual UI update
-        this.element.setAttribute("cx", this._x);
-        this.element.setAttribute("cy", this._y);
-        this.element.setAttribute("r", this._z / 2);
-        this.element.setAttribute("opacity", Math.min(2 / (this._z), 1));
+        if (this._y > (window.scrollY - 20) && this._y < (window.scrollY + window.innerHeight + 20)) {
+            //only perform UI updates if the particle is on screen
+            this.element.setAttribute("cx", this._x);
+            this.element.setAttribute("cy", this._y - window.scrollY);
+            this.element.setAttribute("r", this._z / 2);
+            this.element.setAttribute("opacity", Math.min(1.9 / (this._z), 1));
+            this.wasDisplayed = true;
+        } else if (this.wasDisplayed || Math.random() > 0.999) {
+            this.element.setAttribute("cx", this._x);
+            this.element.setAttribute("cy", this._y - window.scrollY);
+            this.element.setAttribute("r", this._z / 2);
+            this.element.setAttribute("opacity", Math.min(1.9 / (this._z), 1));
+            this.wasDisplayed = false;
+        }
     }
     sayUtterances(utterances, delay_start) {
         //console.log(utterances);
@@ -172,6 +183,8 @@ class ParticleSystem {
         this.update_this = this.update.bind(this);
         requestAnimationFrame(this.update_this);
         window.addEventListener('resize', this.on_resize.bind(this));
+        window.addEventListener('orientationchange', this.on_resize.bind(this));
+        setTimeout(this.on_resize.bind(this), 800); //this fixes a bug where the window resizes at the start when DevTools is open
     }
     on_resize() {
         this.width = window.innerWidth;
