@@ -36,7 +36,7 @@ window.addEventListener("scrollend", () => {
 class ScrollPillNavbar {
     constructor(element, scrollpill) {
         this.scrollpill = scrollpill;
-        scrollpill.element.classList.add('scrollpill-open');
+        //scrollpill.element.classList.add('scrollpill-open');
         this.element = element;
         this.is_open = true;
         this.sections = [...this.element.querySelectorAll('a')].map((element) => {
@@ -87,19 +87,19 @@ class ScrollPillNavbar {
     show() {
         if(this.is_open) return;
         //this.element.style.display = 'block';
-        this.scrollpill.element.classList.add('scrollpill-open');
+        //this.scrollpill.element.classList.add('scrollpill-open');
         this.is_open = true;
     }
     hide() {
         if(!this.is_open) return;
         //this.element.style.display = 'none';
-        this.scrollpill.element.classList.remove('scrollpill-open');
+        //this.scrollpill.element.classList.remove('scrollpill-open');
         this.is_open = false;
     }
     forceHide() {
         if (!this.is_open) return;
         //this.element.style.display = 'none';
-        this.scrollpill.element.classList.remove('scrollpill-open');
+        //this.scrollpill.element.classList.remove('scrollpill-open');
         this.is_open = false;
     }
     toggle() {

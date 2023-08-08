@@ -116,11 +116,6 @@ $fontawesome-icon-names: (
         content: "\f062";
     }
 
-    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):active
-    /*&:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging*/{
-        @include make_scrollpill_big;
-    }
-
     // &.scrollpill-at-top {
     //     /*animate making smaller*/
     //     animation: scrollpill-unshrink-tall 0.2s ease-in-out forwards !important;
@@ -146,13 +141,13 @@ $fontawesome-icon-names: (
         right: 0px !important;
     }
 
-    &.scrollpill-open {
+    :active {
         .scrollpill-navbar {
             display: block !important;
         }
     }
     
-    &:not(.scrollpill-open) {
+    :not(:active) {
         .scrollpill-navbar {
             display: none;
         }
@@ -166,8 +161,13 @@ $fontawesome-icon-names: (
         @include make_scrollpill_small();
     }
 
-    &:not(.scrollpill-at-bottom):not(.scrollpill-at-top).scrollpill-open {
-        @include make_scrollpill_big();
+    // &:not(.scrollpill-at-bottom):not(.scrollpill-at-top).scrollpill-open {
+    //     @include make_scrollpill_big();
+    // }
+
+    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):active
+    /*&:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging*/{
+        @include make_scrollpill_big;
     }
 
     &.scrollpill-at-bottom {
