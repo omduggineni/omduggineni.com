@@ -155,6 +155,8 @@ class ScrollPillElement {
         this.element.classList.remove(this.state);
         this.element.classList.add(state);
         this.state = state;
+        //force restyle
+        this.element.offsetHeight;
     }
     percentage2screenpx(percentage) {
         //console.log(percentage);
@@ -212,8 +214,10 @@ class ScrollPillElement {
         }
 
         if (this.navbar.is_open) {
+            this.element.blur();
             this.navbar.hide();
         } else {
+            this.element.focus();
             this.navbar.show();
         }
     }

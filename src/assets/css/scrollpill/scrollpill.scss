@@ -116,7 +116,7 @@ $fontawesome-icon-names: (
         content: "\f062";
     }
 
-    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):hover
+    &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):active
     /*&:not(.scrollpill-at-top):not(.scrollpill-at-bottom).scrollpill-dragging*/{
         @include make_scrollpill_big;
     }
