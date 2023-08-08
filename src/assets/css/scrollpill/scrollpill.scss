@@ -16,9 +16,9 @@ $fontawesome-icon-names: (
 
 @keyframes scrollpill-unshrink {
     0% {
-        width: 10px;
-        height: 10px;
-        right: 10px;
+        width: 20px;
+        height: 20px;
+        right: 0px;
     }
 
     100% {
@@ -45,72 +45,47 @@ $fontawesome-icon-names: (
         width: 50px;
         height: 50px;
         right: 0px;
+        font-size: 30px !important;
     }
+
+    // 5%{ font-size: calc(30px*0.95 + 10pt*0.05); }
+    // 10%{ font-size: calc(30px*0.9 + 10pt*0.1); }
+    // 15%{ font-size: calc(30px*0.85 + 10pt*0.15); }
+    // 20%{ font-size: calc(30px*0.8 + 10pt*0.2); }
+    // 25%{ font-size: calc(30px*0.75 + 10pt*0.25); }
+    // 30%{ font-size: calc(30px*0.7 + 10pt*0.3); }
+    // 35%{ font-size: calc(30px*0.65 + 10pt*0.35); }
+    // 40%{ font-size: calc(30px*0.6 + 10pt*0.4); }
+    // 45%{ font-size: calc(30px*0.55 + 10pt*0.45);}
+    // 50%{ font-size: calc(30px*0.5 + 10pt*0.5); }
+    // 55%{ font-size: calc(30px*0.55 + 10pt*0.45); }
+    // 60%{ font-size: calc(30px*0.4 + 10pt*0.6); }
+    // 65%{ font-size: calc(30px*0.35 + 10pt*0.65); }
+    // 70%{ font-size: calc(30px*0.3 + 10pt*0.7); }
+    // 75%{ font-size: calc(30px*0.25 + 10pt*0.75); }
+    // 80%{ font-size: calc(30px*0.2 + 10pt*0.8); }
+    // 85%{ font-size: calc(30px*0.15 + 10pt*0.85); }
+    // 90%{ font-size: calc(30px*0.1 + 10pt*0.9); }
+    // 95%{ font-size: calc(30px*0.05 + 10pt*0.95); }
 
     100% {
-        width: 10px;
-        height: 10px;
-        right: 10px;
-    }
-}
-@keyframes scrollpill-before-unshrink-bars {
-    0%{
-        content: '';
-    }
-    99%{
-        content: '';
-    }
-    100%{
-        content: "\f0c9";
-    }
-}
-@keyframes scrollpill-before-unshrink-arrow {
-    0%{
-        content: '';
-    }
-    99%{
-        content: '';
-    }
-    100%{
-        content: "\f062";
-    }
-}
-
-@keyframes scrollpill-wobble {
-    0% {
-        width: 10px;
-        height: 10px;
-        margin-top: 10px;
-        right: 10px;
-    }
-
-    100% {
-        width: 50px;
-        height: 50px;
+        width: 20px;
+        height: 20px;
         right: 0px;
+        font-size: 10pt;
     }
 }
 
-@mixin make_scrollpill_big($icon: "bars") {
+@mixin make_scrollpill_big() {
     animation: scrollpill-unshrink 0.2s ease-in-out forwards !important;
     animation-iteration-count: 1 !important;
     right: 0px;
     font-size: 30px !important;
     color: $textColor !important;
     box-shadow: #0066ff 0px 0px 10px;
-
-    &::before {
-        @if $icon == "bars" {
-            animation: scrollpill-before-unshrink-bars 0.2s ease-in-out forwards;
-        } @else if $icon == "arrow-up" {
-            animation: scrollpill-before-unshrink-arrow 0.2s ease-in-out forwards;
-        } @else {
-            @error "Invalid icon type for scrollpill";
-        }
-    }
 }
 
-@mixin make_scrollpill_small {
+@mixin make_scrollpill_small() {
     animation: scrollpill-shrink 0.2s ease-in-out forwards;
     animation-iteration-count: 1 !important;
 }
@@ -128,12 +103,17 @@ $fontawesome-icon-names: (
     top: 0;
     background-color: #0066ff;
     pointer-events: bounding-box;
+    vertical-align: middle;
 
     &::before {
         font-family: 'Font Awesome 6 Free';
         display: inline-block;
         font-weight: 900;
-        content: '';
+        content: "\f0c9";
+    }
+
+    &.scrollpill-at-bottom::before{
+        content: "\f062";
     }
 
     &:not(.scrollpill-at-top):not(.scrollpill-at-bottom):not(.scrollpill-at-top):hover
@@ -159,7 +139,7 @@ $fontawesome-icon-names: (
     
     &.scrollpill-at-top-first {
         &::before{
-            content: "\f062";
+            content: "\f0c9";
         }
         width: 50px !important;
         height: 50px !important;
@@ -179,19 +159,19 @@ $fontawesome-icon-names: (
     }
 
     &.scrollpill-at-top-first, &.scrollpill-at-top {
-        @include make_scrollpill_big($icon: "bars");
+        @include make_scrollpill_big();
     }
 
     &.scrollpill-at-middle {
-        @include make_scrollpill_small;
+        @include make_scrollpill_small();
     }
 
     &:not(.scrollpill-at-bottom):not(.scrollpill-at-top).scrollpill-open {
-        @include make_scrollpill_big($icon: "bars");
+        @include make_scrollpill_big();
     }
 
     &.scrollpill-at-bottom {
-        @include make_scrollpill_big($icon: "arrow-up");
+        @include make_scrollpill_big();
     }
 }
 
