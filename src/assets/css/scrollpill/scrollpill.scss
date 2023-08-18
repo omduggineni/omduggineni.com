@@ -27,19 +27,6 @@ $fontawesome-icon-names: (
         right: 0px;
     }
 }
-@keyframes scrollpill-unshrink-tall {
-    0% {
-        width: 10px;
-        height: 10px;
-        right: 10px;
-    }
-
-    100% {
-        width: 10px;
-        height: 50px;
-        right: 0px;
-    }
-}
 @keyframes scrollpill-shrink {
     0% {
         width: 50px;
@@ -47,26 +34,6 @@ $fontawesome-icon-names: (
         right: 0px;
         font-size: 30px !important;
     }
-
-    // 5%{ font-size: calc(30px*0.95 + 10pt*0.05); }
-    // 10%{ font-size: calc(30px*0.9 + 10pt*0.1); }
-    // 15%{ font-size: calc(30px*0.85 + 10pt*0.15); }
-    // 20%{ font-size: calc(30px*0.8 + 10pt*0.2); }
-    // 25%{ font-size: calc(30px*0.75 + 10pt*0.25); }
-    // 30%{ font-size: calc(30px*0.7 + 10pt*0.3); }
-    // 35%{ font-size: calc(30px*0.65 + 10pt*0.35); }
-    // 40%{ font-size: calc(30px*0.6 + 10pt*0.4); }
-    // 45%{ font-size: calc(30px*0.55 + 10pt*0.45);}
-    // 50%{ font-size: calc(30px*0.5 + 10pt*0.5); }
-    // 55%{ font-size: calc(30px*0.55 + 10pt*0.45); }
-    // 60%{ font-size: calc(30px*0.4 + 10pt*0.6); }
-    // 65%{ font-size: calc(30px*0.35 + 10pt*0.65); }
-    // 70%{ font-size: calc(30px*0.3 + 10pt*0.7); }
-    // 75%{ font-size: calc(30px*0.25 + 10pt*0.75); }
-    // 80%{ font-size: calc(30px*0.2 + 10pt*0.8); }
-    // 85%{ font-size: calc(30px*0.15 + 10pt*0.85); }
-    // 90%{ font-size: calc(30px*0.1 + 10pt*0.9); }
-    // 95%{ font-size: calc(30px*0.05 + 10pt*0.95); }
 
     100% {
         width: 20px;
