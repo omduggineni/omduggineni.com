@@ -30,7 +30,7 @@ jobs:
     - run: npm i
     - run: npx parcel build src/index.html
     - name: Upload dist/ as a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v4
       with:
         name: dist
         path: dist/*
