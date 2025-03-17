@@ -19,16 +19,15 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: npx parcel build src/index.html
+    - run: yarn
+    - run: yarn build
     - name: Upload dist/ as a Build Artifact
       uses: actions/upload-artifact@v4
       with:
