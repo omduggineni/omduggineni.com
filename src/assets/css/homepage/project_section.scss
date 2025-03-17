@@ -22,6 +22,11 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 
+    position: relative;
+    border: 2px solid white;
+    background-color: $backgroundColor;
+    text-align: left;
+
     @media (min-width: $screen-desktop-sm) {
         width: 50%;
         margin-left: 0.5rem;
@@ -29,11 +34,6 @@
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
-
-    position: relative;
-    border: 2px solid white;
-    background-color: $backgroundColor;
-    text-align: left;
 
     h2 {
         padding-bottom: 0.25rem;
