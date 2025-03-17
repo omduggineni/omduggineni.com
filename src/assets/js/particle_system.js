@@ -115,7 +115,6 @@ class Particle {
         this.element.setAttribute("opacity", Math.min(2 / (this._z), 1));
         this.element.setAttribute("fill", "#ffff00");
         parentElement.appendChild(this.element);
-        this.wasDisplayed = false;
     }
     update() {
         //particle calculation logic
@@ -130,20 +129,10 @@ class Particle {
         //if(Math.random() > 0.999) particleSay("Hello!", this._parentSystem.text_element, this._x, this._y, 1000);
 
         //actual UI update
-        if (this._y > (window.scrollY - 20) && this._y < (window.scrollY + window.innerHeight + 20)) {
-            //only perform UI updates if the particle is on screen
-            this.element.setAttribute("cx", this._x);
-            this.element.setAttribute("cy", this._y - window.scrollY);
-            this.element.setAttribute("r", this._z / 2);
-            this.element.setAttribute("opacity", Math.min(1.9 / (this._z), 1));
-            this.wasDisplayed = true;
-        } else if (this.wasDisplayed || Math.random() > 0.999) {
-            this.element.setAttribute("cx", this._x);
-            this.element.setAttribute("cy", this._y - window.scrollY);
-            this.element.setAttribute("r", this._z / 2);
-            this.element.setAttribute("opacity", Math.min(1.9 / (this._z), 1));
-            this.wasDisplayed = false;
-        }
+        this.element.setAttribute("cx", this._x);
+        this.element.setAttribute("cy", this._y - window.scrollY);
+        this.element.setAttribute("r", this._z / 2);
+        this.element.setAttribute("opacity", Math.min(1.9 / (this._z), 1));
     }
     sayUtterances(utterances, delay_start) {
         //console.log(utterances);
@@ -155,7 +144,6 @@ Particle.SPEED = 1;
 Particle.WIDTH = 15;
 class ParticleSystem {
     constructor(numParticles) {
-
         this._ticknum = 0;
 
         this.width = window.innerWidth - Particle.WIDTH;

@@ -186,7 +186,6 @@ class ScrollPillElement {
         } else if (scrollPercentage >= 99.75) {
             this.updateState(this.state_machine.AT_BOTTOM);
             this.navbar.forceHide();
-            console.log("force hide")
         } else {
             this.updateState(this.state_machine.AT_MIDDLE);
             this.navbar.hide();
